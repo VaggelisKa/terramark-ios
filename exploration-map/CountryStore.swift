@@ -109,8 +109,9 @@ final class CountryStore {
 
     /// Returns the country's flag emoji (e.g. 🇺🇸) from its ISO alpha-2 code, or empty string.
     func flagEmoji(for countryId: String) -> String {
-        guard let code = countryCodes[countryId] ?? countryCodes[countryId.uppercased()],
-              code.count == 2 else { return "" }
+        let code = countryCodes[countryId] ?? countryCodes[countryId.uppercased()]
+            ?? Self.alpha3ToAlpha2[countryId] ?? Self.alpha3ToAlpha2[countryId.uppercased()]
+        guard let code = code, code.count == 2 else { return "" }
         let base: UInt32 = 0x1F1E6 - 0x41
         return code.uppercased().unicodeScalars.compactMap { scalar in
             guard scalar.value >= 65, scalar.value <= 90,
@@ -118,6 +119,11 @@ final class CountryStore {
             return Character(u)
         }.map(String.init).joined()
     }
+
+    /// Fallback when GeoJSON has ISO_A2 = -99; key = ISO 3166-1 alpha-3, value = alpha-2.
+    private static let alpha3ToAlpha2: [String: String] = [
+        "FRA": "FR", "NOR": "NO", "KOS": "XK"
+    ]
 
     func status(for countryId: String) -> CountryStatus {
         statuses[countryId] ?? .none
@@ -176,7 +182,7 @@ final class CountryStore {
                 if names[id] == nil {
                     names[id] = name
                 }
-                if let iso2 = props["ISO_A2"] ?? props["iso_a2"], iso2.count == 2 {
+                if let iso2 = extractIso2(from: props) {
                     codes[id] = iso2
                 }
                 if let continent = props["CONTINENT"] ?? props["REGION_UN"], !continent.isEmpty {
@@ -262,15 +268,24 @@ final class CountryStore {
         return "Unknown"
     }
 
+    private func extractIso2(from properties: [String: String]) -> String? {
+        let raw = properties["ISO_A2"] ?? properties["iso_a2"] ?? properties["ISO_A2_EH"]
+        guard let raw = raw, raw != "-99", raw.count == 2 else { return nil }
+        return raw
+    }
+
     private func extractId(from properties: [String: String], fallbackName: String) -> String {
-        if let id = properties["ISO_A3"] { return id }
-        if let id = properties["iso_a3"] { return id }
-        if let id = properties["ADM0_A3"] { return id }
-        if let id = properties["SOV_A3"] { return id }
-        if let id = properties["GU_A3"] { return id }
-        if let id = properties["SU_A3"] { return id }
-        if let id = properties["BRK_A3"] { return id }
-        if let id = properties["id"] { return id }
+        func validId(_ id: String?) -> String? {
+            guard let id = id, id != "-99", id.count == 3 else { return nil }
+            return id
+        }
+        if let id = validId(properties["ISO_A3"]) ?? validId(properties["iso_a3"]) { return id }
+        if let id = validId(properties["ADM0_A3"]) { return id }
+        if let id = validId(properties["SOV_A3"]) { return id }
+        if let id = validId(properties["GU_A3"]) { return id }
+        if let id = validId(properties["SU_A3"]) { return id }
+        if let id = validId(properties["BRK_A3"]) { return id }
+        if let id = properties["id"], !id.isEmpty { return id }
         return fallbackName
     }
 }

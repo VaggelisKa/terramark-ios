@@ -10,11 +10,28 @@ import SwiftUI
 @main
 struct exploration_mapApp: App {
     @State private var store = CountryStore()
+    @State private var showSplash = true
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(store)
+            ZStack {
+                ContentView()
+                    .environment(store)
+                    .opacity(showSplash ? 0 : 1)
+
+                if showSplash {
+                    SplashView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
+            }
+            .animation(.easeInOut(duration: 0.5), value: showSplash)
+            .onAppear {
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(1.5))
+                    showSplash = false
+                }
+            }
         }
     }
 }
