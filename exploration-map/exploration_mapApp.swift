@@ -15,7 +15,7 @@ struct exploration_mapApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                ContentView()
+                MapScreen()
                     .environment(store)
                     .opacity(showSplash ? 0 : 1)
 

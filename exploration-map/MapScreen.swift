@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MapScreen.swift
 //  exploration-map
 //
 //  Created by Vaggelis Karavasileiadis on 2/2/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MapScreen: View {
     @Environment(CountryStore.self) private var store
     @State private var selectedCountry: CountrySelection?
 
@@ -87,6 +87,6 @@ private struct CountryStatusSheet: View {
 }
 
 #Preview {
-    ContentView()
+    MapScreen()
         .environment(CountryStore())
 }
