@@ -64,12 +64,16 @@ final class CountryStore {
     private(set) var countryContinents: [String: String] = [:]
     private(set) var revision: Int = 0
     var statuses: [String: CountryStatus] = [:]
+    /// Ordered IDs for "want to visit" (priority order); persisted.
+    var wantToVisitOrder: [String] = []
 
     private let defaultsKey = "CountryStatusById"
+    private let wantToVisitOrderKey = "WantToVisitOrder"
 
     init() {
         loadGeoJSON()
         loadStatuses()
+        loadWantToVisitOrder()
     }
 
     var totalCountries: Int {
@@ -84,12 +88,12 @@ final class CountryStore {
         statuses.values.filter { $0 == .wantToVisit }.count
     }
 
-    /// Country IDs marked "want to visit", sorted by display name.
+    /// Country IDs marked "want to visit", in user-defined priority order (persisted). New items appended at end, sorted by name.
     var wantToVisitCountryIds: [String] {
-        statuses
-            .filter { $0.value == .wantToVisit }
-            .map(\.key)
-            .sorted { displayName(for: $0).localizedCaseInsensitiveCompare(displayName(for: $1)) == .orderedAscending }
+        let wantIds = Set(statuses.filter { $0.value == .wantToVisit }.map(\.key))
+        let ordered = wantToVisitOrder.filter { wantIds.contains($0) }
+        let unordered = wantIds.subtracting(ordered).sorted { displayName(for: $0).localizedCaseInsensitiveCompare(displayName(for: $1)) == .orderedAscending }
+        return ordered + unordered
     }
 
     var visitedPercentage: Double {
@@ -141,10 +145,23 @@ final class CountryStore {
     func updateStatus(_ status: CountryStatus, for countryId: String) {
         if status == .none {
             statuses.removeValue(forKey: countryId)
+            wantToVisitOrder.removeAll { $0 == countryId }
         } else {
             statuses[countryId] = status
+            if status == .wantToVisit, !wantToVisitOrder.contains(countryId) {
+                wantToVisitOrder.append(countryId)
+            } else if status != .wantToVisit {
+                wantToVisitOrder.removeAll { $0 == countryId }
+            }
         }
         saveStatuses()
+        saveWantToVisitOrder()
+        bumpRevision()
+    }
+
+    func updateWantToVisitOrder(_ ids: [String]) {
+        wantToVisitOrder = ids
+        saveWantToVisitOrder()
         bumpRevision()
     }
 
@@ -211,6 +228,17 @@ final class CountryStore {
         } catch {
             // Keep the app running even if the GeoJSON fails to load.
         }
+    }
+
+    private func loadWantToVisitOrder() {
+        guard let data = UserDefaults.standard.data(forKey: wantToVisitOrderKey),
+              let order = try? JSONDecoder().decode([String].self, from: data) else { return }
+        wantToVisitOrder = order.filter { statuses[$0] == .wantToVisit }
+    }
+
+    private func saveWantToVisitOrder() {
+        guard let data = try? JSONEncoder().encode(wantToVisitOrder) else { return }
+        UserDefaults.standard.set(data, forKey: wantToVisitOrderKey)
     }
 
     private func loadStatuses() {

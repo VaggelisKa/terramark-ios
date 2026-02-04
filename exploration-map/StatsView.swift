@@ -36,16 +36,16 @@ struct StatsView: View {
                 if isExpanded {
                     VStack(spacing: 0) {
                         StatRow(title: "Countries", value: "\(store.totalCountries)")
-                    StatDivider()
-                    StatRow(title: "Visited or lived", value: "\(store.visitedCount)")
-                    StatDivider()
-                    StatRow(
-                        title: "World visited or lived",
-                        value: String(format: "%.1f%%", store.visitedPercentage * 100.0)
-                    )
-                    ForEach(store.continentStats) { stat in
+                        StatDivider()
+                        StatRow(title: "Visited or lived", value: "\(store.visitedCount)")
                         StatDivider()
                         StatRow(
+                            title: "World visited or lived",
+                            value: String(format: "%.1f%%", store.visitedPercentage * 100.0)
+                        )
+                        ForEach(store.continentStats) { stat in
+                            StatDivider()
+                            StatRow(
                                 title: stat.name,
                                 value: String(format: "%.1f%%", stat.percentage * 100.0)
                             )
