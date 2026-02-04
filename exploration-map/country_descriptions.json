@@ -1,0 +1,887 @@
+{
+  "AFG": {
+    "overview": "Landlocked country in South Asia; rugged mountains and deserts. Capital Kabul.",
+    "knownFor": "Ancient Silk Road, carpets, lapis lazuli, and decades of conflict and resilience.",
+    "quickHistory": "Historical crossroads of empires. Independence 1919. Soviet invasion (1979–1989), Taliban rule, and NATO presence shaped modern history."
+  },
+  "ALB": {
+    "overview": "Small Balkan country on the Adriatic and Ionian seas. Capital Tirana.",
+    "knownFor": "Stunning coastlines, Ottoman heritage, bunkers, and emerging tourism.",
+    "quickHistory": "Illyrian and Roman past. Ottoman rule for centuries. Independent 1912. Communist isolation under Hoxha; opened up after 1991."
+  },
+  "DZA": {
+    "overview": "Largest country in Africa by area; Mediterranean coast and vast Sahara. Capital Algiers.",
+    "knownFor": "Roman ruins (Timgad, Djemila), Sahara desert, and oil and gas.",
+    "quickHistory": "Numidian, Roman, and Arab heritage. French colony 1830–1962. Independence after a long war; single-party then multi-party state."
+  },
+  "AGO": {
+    "overview": "Southwest African country on the Atlantic. Capital Luanda.",
+    "knownFor": "Oil, diamonds, wildlife (including giant sable), and Portuguese-speaking culture.",
+    "quickHistory": "Portuguese colony for centuries. Independence 1975; long civil war until 2002. Now a major oil producer."
+  },
+  "ATA": {
+    "overview": "Frozen continent around the South Pole; no permanent population.",
+    "knownFor": "Scientific research, penguins, ice sheets, and extreme climate.",
+    "quickHistory": "Formally discovered in the 19th century. Antarctic Treaty (1959) reserves it for peace and science; territorial claims suspended."
+  },
+  "ARG": {
+    "overview": "Large South American country; Pampas, Patagonia, and Andes. Capital Buenos Aires.",
+    "knownFor": "Tango, beef, wine, football (Maradona, Messi), and dramatic landscapes.",
+    "quickHistory": "Spanish colony; independence 1816. Waves of European immigration. Periods of military rule and economic crises; democracy since 1983."
+  },
+  "ARM": {
+    "overview": "Landlocked in the South Caucasus. Capital Yerevan.",
+    "knownFor": "Ancient Christian heritage, Mount Ararat views, brandy, and tech sector.",
+    "quickHistory": "One of the oldest Christian nations. Soviet from 1920; independent 1991. Conflict with Azerbaijan over Nagorno-Karabakh."
+  },
+  "AUS": {
+    "overview": "Island continent in the Pacific. Capital Canberra; Sydney and Melbourne are major cities.",
+    "knownFor": "Unique wildlife, beaches, Outback, wine, and multicultural cities.",
+    "quickHistory": "British colonization from 1788. Federation 1901. Strong ties to UK and US; diverse immigration and Indigenous heritage."
+  },
+  "AUT": {
+    "overview": "Landlocked in Central Europe; Alps and Danube. Capital Vienna.",
+    "knownFor": "Classical music (Mozart, Strauss), Alps, coffeehouses, and skiing.",
+    "quickHistory": "Heart of the Habsburg Empire. Annexed by Nazi Germany; neutral after 1955. EU member; high standard of living."
+  },
+  "AZE": {
+    "overview": "Caucasus country on the Caspian Sea. Capital Baku.",
+    "knownFor": "Oil and gas, mud volcanoes, carpet weaving, and modern architecture.",
+    "quickHistory": "Ancient Turkic and Persian influence. Soviet from 1920; independent 1991. Conflict with Armenia over Nagorno-Karabakh."
+  },
+  "BGD": {
+    "overview": "Dense, low-lying South Asian country; Ganges delta. Capital Dhaka.",
+    "knownFor": "Textiles and garment industry, rivers, tea, and resilience to floods.",
+    "quickHistory": "Part of British India; East Pakistan 1947; independent Bangladesh 1971 after war. High population density; growing economy."
+  },
+  "BLR": {
+    "overview": "Landlocked in Eastern Europe. Capital Minsk.",
+    "knownFor": "Forests, Soviet-era architecture, and IT sector.",
+    "quickHistory": "Part of USSR; independent 1991. Long-standing authoritarian rule and close ties to Russia; contested elections and protests."
+  },
+  "BEL": {
+    "overview": "Small Western European country; Brussels is EU and NATO HQ. Capital Brussels.",
+    "knownFor": "Chocolate, beer, waffles, comics (Tintin), and EU institutions.",
+    "quickHistory": "Independent 1830. Colonial power in Africa. Host to EU and NATO; linguistically divided (Dutch, French, German)."
+  },
+  "BLZ": {
+    "overview": "Central American country on the Caribbean. Capital Belmopan.",
+    "knownFor": "Barrier reef, Maya ruins, English-speaking, and ecotourism.",
+    "quickHistory": "British Honduras until 1973; independent Belize 1981. Only Central American country with English as official language."
+  },
+  "BEN": {
+    "overview": "West African country between Togo and Nigeria. Capital Porto-Novo.",
+    "knownFor": "Birthplace of vodun (voodoo), Ouidah history, and cotton.",
+    "quickHistory": "Dahomey kingdom; French colony. Independent 1960 as Dahomey, renamed Benin 1975. Multiparty democracy since 1990."
+  },
+  "BTN": {
+    "overview": "Himalayan kingdom between India and China. Capital Thimphu.",
+    "knownFor": "Gross National Happiness, monasteries, trekking, and carbon-negative status.",
+    "quickHistory": "Buddhist monarchy; never colonized. Opened to tourism cautiously; constitutional monarchy since 2008."
+  },
+  "BOL": {
+    "overview": "Landlocked in central South America; Altiplano and Amazon. Capital Sucre; La Paz is seat of government.",
+    "knownFor": "Salar de Uyuni, indigenous culture, and coca.",
+    "quickHistory": "Named after Bolívar. Spanish colony; independence 1825. Tin and silver; political instability and social movements."
+  },
+  "BIH": {
+    "overview": "Balkan country; Sarajevo was host to the 1984 Winter Olympics. Capital Sarajevo.",
+    "knownFor": "Ottoman and Austro-Hungarian heritage, mountains, and postwar recovery.",
+    "quickHistory": "Part of Yugoslavia; independence 1992; brutal war until 1995. Complex state with two entities and three constituent peoples."
+  },
+  "BWA": {
+    "overview": "Southern African country; stable democracy. Capital Gaborone.",
+    "knownFor": "Okavango Delta, diamonds, and wildlife.",
+    "quickHistory": "British protectorate Bechuanaland; independent Botswana 1966. Diamonds drove growth; one of Africa's most stable democracies."
+  },
+  "BRA": {
+    "overview": "Largest country in South America; Amazon and long coast. Capital Brasília.",
+    "knownFor": "Carnival, football, samba, Amazon rainforest, and coffee.",
+    "quickHistory": "Portuguese colony; independence 1822. Empire then republic. Periods of dictatorship; democracy since 1985. Major emerging economy."
+  },
+  "BRN": {
+    "overview": "Small sultanate on Borneo. Capital Bandar Seri Begawan.",
+    "knownFor": "Oil wealth, rainforest, and Islamic monarchy.",
+    "quickHistory": "British protectorate; full independence 1984. Sultan rules with substantial oil revenues; high standard of living."
+  },
+  "BGR": {
+    "overview": "Balkan country on the Black Sea. Capital Sofia.",
+    "knownFor": "Yogurt, roses, Cyrillic script origin, and Thracian heritage.",
+    "quickHistory": "Slavic and Bulgar state; Ottoman rule for centuries. Independent 1878; communist era; EU member 2007."
+  },
+  "BFA": {
+    "overview": "Landlocked West African country. Capital Ouagadougou.",
+    "knownFor": "Film festival (FESPACO), cotton, and Sahel culture.",
+    "quickHistory": "French Upper Volta; independent 1960; renamed Burkina Faso 1984. Repeated coups and jihadist violence in recent years."
+  },
+  "BDI": {
+    "overview": "Small landlocked country in East Africa. Capital Gitega.",
+    "knownFor": "Coffee, tea, and tragic ethnic conflict.",
+    "quickHistory": "Belgian-administered; independent 1962. Hutu–Tutsi violence, including genocide in 1993; fragile stability."
+  },
+  "KHM": {
+    "overview": "Southeast Asian kingdom; home to Angkor. Capital Phnom Penh.",
+    "knownFor": "Angkor Wat, Khmer Rouge history, and Mekong.",
+    "quickHistory": "Khmer Empire; French protectorate. Independence 1953. Khmer Rouge genocide (1975–1979); recovery and tourism."
+  },
+  "CMR": {
+    "overview": "Central African country; coast on the Gulf of Guinea. Capital Yaoundé.",
+    "knownFor": "Football, coffee, cocoa, and linguistic diversity (French and English).",
+    "quickHistory": "German then French/British rule; independent 1960–61. Anglophone–Francophone tensions and long-serving president."
+  },
+  "CAN": {
+    "overview": "Large North American country; second-largest by area. Capital Ottawa.",
+    "knownFor": "Maple syrup, ice hockey, vast wilderness, multiculturalism, and Niagara Falls.",
+    "quickHistory": "French and British colonization; confederation 1867. Peaceful evolution to full independence; bilingual and diverse."
+  },
+  "CAF": {
+    "overview": "Landlocked in central Africa. Capital Bangui.",
+    "knownFor": "Diamonds, rainforest, and chronic instability.",
+    "quickHistory": "French colony; independent 1960. Coups and rebellions; UN and French interventions; one of the world's poorest."
+  },
+  "TCD": {
+    "overview": "Landlocked in central Africa; includes part of Lake Chad. Capital N'Djamena.",
+    "knownFor": "Lake Chad, oil, and Sahelian culture.",
+    "quickHistory": "French colony; independent 1960. Long civil conflict; Boko Haram and regional instability; oil exports."
+  },
+  "CHL": {
+    "overview": "Long, narrow country along the Pacific and Andes. Capital Santiago.",
+    "knownFor": "Copper, wine, Patagonia, and Pablo Neruda.",
+    "quickHistory": "Spanish colony; independence 1818. Pinochet dictatorship (1973–1990); return to democracy; strong economy."
+  },
+  "CHN": {
+    "overview": "Most populous country; East Asian powerhouse. Capital Beijing.",
+    "knownFor": "Great Wall, dynastic history, tea, cuisine, and manufacturing.",
+    "quickHistory": "Ancient civilization; republic 1912; communist from 1949. Reform and opening from late 1970s; global economic and political weight."
+  },
+  "COL": {
+    "overview": "Northwest South America; Pacific and Caribbean coasts. Capital Bogotá.",
+    "knownFor": "Coffee, emeralds, Gabriel García Márquez, and biodiversity.",
+    "quickHistory": "Spanish colony; independence 1819. Long guerrilla conflict; peace deal with FARC (2016); growing tourism and tech."
+  },
+  "CRI": {
+    "overview": "Central American country; no standing army. Capital San José.",
+    "knownFor": "Ecotourism, coffee, peace, and biodiversity.",
+    "quickHistory": "Spanish colony; independence 1821. Abolished army 1949; stable democracy and green reputation."
+  },
+  "HRV": {
+    "overview": "Balkan country on the Adriatic. Capital Zagreb.",
+    "knownFor": "Dalmatian coast, Dubrovnik, Plitvice Lakes, and football.",
+    "quickHistory": "Part of Yugoslavia; independent 1991 after war. EU member; tourism and EU funds drive growth."
+  },
+  "CUB": {
+    "overview": "Caribbean island nation. Capital Havana.",
+    "knownFor": "Cigars, vintage cars, salsa, revolution, and classic architecture.",
+    "quickHistory": "Spanish colony; independence 1902. Castro revolution 1959; decades of US embargo; recent economic reforms."
+  },
+  "CYP": {
+    "overview": "Island in the eastern Mediterranean. Capital Nicosia.",
+    "knownFor": "Divided capital, beaches, ancient sites, and EU membership.",
+    "quickHistory": "British colony; independent 1960. Greek–Turkish conflict; island split 1974; EU member (south) since 2004."
+  },
+  "CZE": {
+    "overview": "Central European country; no coastline. Capital Prague.",
+    "knownFor": "Pilsner beer, castles, Kafka, and Velvet Revolution.",
+    "quickHistory": "Part of Czechoslovakia; peaceful split 1993. EU and NATO member; strong industry and tourism."
+  },
+  "COD": {
+    "overview": "Large central African country; Congo River. Capital Kinshasa.",
+    "knownFor": "Congo River, minerals, gorillas, and complex conflicts.",
+    "quickHistory": "Belgian Congo; independent 1960. Mobutu rule; two Congo wars; eastern instability and mineral exploitation."
+  },
+  "DNK": {
+    "overview": "Nordic country; Jutland and islands. Capital Copenhagen.",
+    "knownFor": "Hygge, design, Vikings, Lego, and wind energy.",
+    "quickHistory": "Viking age; unified kingdom. Neutral in WWII; EU member (with opt-outs). High equality and quality of life."
+  },
+  "DJI": {
+    "overview": "Small Horn of Africa country on the Red Sea. Capital Djibouti.",
+    "knownFor": "Strategic port, French and US bases, and salt lake.",
+    "quickHistory": "French territory; independent 1977. Key logistics hub; authoritarian rule; limited resources."
+  },
+  "DOM": {
+    "overview": "Caribbean country sharing Hispaniola with Haiti. Capital Santo Domingo.",
+    "knownFor": "First European settlement in Americas, baseball, merengue, and beaches.",
+    "quickHistory": "Spanish colony; independence 1844. Long Trujillo dictatorship; democracy and tourism; contrasts with Haiti."
+  },
+  "TLS": {
+    "overview": "Southeast Asian half-island nation. Capital Dili.",
+    "knownFor": "Coffee, resistance history, and young independence.",
+    "quickHistory": "Portuguese Timor; occupied by Indonesia 1975–1999. Independent 2002; oil and nation-building."
+  },
+  "ECU": {
+    "overview": "Pacific and Amazon country on the equator. Capital Quito.",
+    "knownFor": "Galápagos Islands, Andes, and bananas.",
+    "quickHistory": "Part of Gran Colombia; independent 1830. Oil exporter; dollarized economy; biodiversity and tourism."
+  },
+  "EGY": {
+    "overview": "North African country; Nile and Suez. Capital Cairo.",
+    "knownFor": "Pyramids, ancient civilization, Nile, and Arab Spring.",
+    "quickHistory": "Pharaonic then Greco-Roman and Arab. British influence; republic 1952. Peace with Israel; recent authoritarian turn."
+  },
+  "SLV": {
+    "overview": "Smallest Central American country; Pacific coast. Capital San Salvador.",
+    "knownFor": "Coffee, volcanoes, and Salvadoran diaspora.",
+    "quickHistory": "Spanish colony; independence 1821. Civil war 1980s; peace 1992; gangs and migration to US."
+  },
+  "GNQ": {
+    "overview": "Small country on the Gulf of Guinea. Capital Malabo.",
+    "knownFor": "Oil, Spanish-speaking Africa, and authoritarian rule.",
+    "quickHistory": "Spanish colony; independent 1968. Oil wealth; dictatorship and human-rights concerns."
+  },
+  "ERI": {
+    "overview": "Horn of Africa country on the Red Sea. Capital Asmara.",
+    "knownFor": "Art Deco Asmara, long national service, and isolation.",
+    "quickHistory": "Italian then British; federation with Ethiopia; independent 1993. Authoritarian; mass emigration."
+  },
+  "EST": {
+    "overview": "Baltic country on the Gulf of Finland. Capital Tallinn.",
+    "knownFor": "E-government, medieval Old Town, and tech sector.",
+    "quickHistory": "Soviet 1940–1991; independent again. EU and NATO; digital society and strong growth."
+  },
+  "ETH": {
+    "overview": "Landlocked Horn of Africa country. Capital Addis Ababa.",
+    "knownFor": "Coffee origin, Lucy, Orthodox Christianity, and running.",
+    "quickHistory": "Ancient kingdom; never fully colonized. Emperor Haile Selassie; Marxist regime; federal republic; recent conflict in Tigray."
+  },
+  "FLK": {
+    "overview": "South Atlantic British territory. Capital Stanley.",
+    "knownFor": "Sheep, penguins, and 1982 conflict.",
+    "quickHistory": "British since 1833; Argentina claims sovereignty; brief war 1982."
+  },
+  "FJI": {
+    "overview": "Pacific island nation; many islands. Capital Suva.",
+    "knownFor": "Rugby, firewalking, and Melanesian culture.",
+    "quickHistory": "British colony; independent 1970. Coups and ethnic tension; democracy restored; tourism and sugar."
+  },
+  "FIN": {
+    "overview": "Nordic country between Sweden and Russia. Capital Helsinki.",
+    "knownFor": "Sauna, Nokia, education, design, and lakes.",
+    "quickHistory": "Swedish then Russian rule; independent 1917. Winter War with USSR; EU member; high tech and equality."
+  },
+  "FRA": {
+    "overview": "Western European country; Mediterranean to Channel. Capital Paris.",
+    "knownFor": "Wine, cheese, fashion, art, Eiffel Tower, and revolution.",
+    "quickHistory": "Gaul, kingdom, revolution 1789. Napoleonic era; republics and empires. EU founder; global culture and influence."
+  },
+  "ATF": {
+    "overview": "French Southern and Antarctic Territories; scattered islands.",
+    "knownFor": "Research bases, wildlife, and no permanent civilian population.",
+    "quickHistory": "French overseas territory; reserved for science and environment."
+  },
+  "GAB": {
+    "overview": "Central African country on the Atlantic. Capital Libreville.",
+    "knownFor": "Oil, rainforest, and low population density.",
+    "quickHistory": "French colony; independent 1960. Oil-dependent; long Bongo family rule; stable by regional standards."
+  },
+  "GMB": {
+    "overview": "Smallest mainland African country; surrounded by Senegal. Capital Banjul.",
+    "knownFor": "River Gambia, birds, and peanut exports.",
+    "quickHistory": "British colony; independent 1965. Tourism and agriculture; political transition in 2016."
+  },
+  "GEO": {
+    "overview": "Caucasus country on the Black Sea. Capital Tbilisi.",
+    "knownFor": "Wine origin, mountains, and Soviet then pro-Western path.",
+    "quickHistory": "Ancient kingdoms; Russian then Soviet. Independent 1991; Rose Revolution 2003; conflict with Russia over breakaway regions."
+  },
+  "DEU": {
+    "overview": "Central European powerhouse. Capital Berlin.",
+    "knownFor": "Engineering, beer, cars, history, and EU leadership.",
+    "quickHistory": "Holy Roman Empire; unification 1871. Two world wars; division and reunification 1990. EU's largest economy."
+  },
+  "GHA": {
+    "overview": "West African country on the Gulf of Guinea. Capital Accra.",
+    "knownFor": "Gold, cocoa, pan-Africanism, and stable democracy.",
+    "quickHistory": "Gold Coast; independent 1957, first in sub-Saharan Africa. Nkrumah; coups then multiparty democracy; oil and growth."
+  },
+  "GRC": {
+    "overview": "Southern Balkan country; Mediterranean. Capital Athens.",
+    "knownFor": "Ancient philosophy, islands, olives, and debt crisis.",
+    "quickHistory": "Classical civilization; Byzantine and Ottoman. Independent 1821; republic. EU member; tourism and shipping."
+  },
+  "GRL": {
+    "overview": "Danish autonomous territory; world's largest island. Capital Nuuk.",
+    "knownFor": "Ice sheet, Inuit culture, and climate change.",
+    "quickHistory": "Norwegian then Danish; home rule 1979. Mining and fishing; independence debate."
+  },
+  "GTM": {
+    "overview": "Central American country; Pacific and Caribbean. Capital Guatemala City.",
+    "knownFor": "Maya heritage, volcanoes, coffee, and migration.",
+    "quickHistory": "Spanish colony; independence 1821. Long civil war; peace 1996; inequality and violence; many migrate north."
+  },
+  "GIN": {
+    "overview": "West African country on the Atlantic. Capital Conakry.",
+    "knownFor": "Bauxite, music, and political instability.",
+    "quickHistory": "French colony; independent 1958. Sekou Touré; coups and unrest; rich minerals."
+  },
+  "GNB": {
+    "overview": "Small West African country. Capital Bissau.",
+    "knownFor": "Cashew nuts, coups, and Portuguese Creole.",
+    "quickHistory": "Portuguese Guinea; independent 1974. Repeated coups; drug trafficking hub; fragile state."
+  },
+  "GUY": {
+    "overview": "Only English-speaking country in South America. Capital Georgetown.",
+    "knownFor": "Rainforest, sugar, and ethnic diversity.",
+    "quickHistory": "British Guiana; independent 1966. Sugar and bauxite; border dispute with Venezuela."
+  },
+  "HTI": {
+    "overview": "Caribbean country on Hispaniola. Capital Port-au-Prince.",
+    "knownFor": "First black republic, Creole, and resilience amid poverty and disasters.",
+    "quickHistory": "French Saint-Domingue; slave revolt; independent 1804. Duvaliers; earthquakes and cholera; ongoing crisis."
+  },
+  "HND": {
+    "overview": "Central American country; Caribbean and Pacific. Capital Tegucigalpa.",
+    "knownFor": "Bananas, coffee, and migration.",
+    "quickHistory": "Spanish colony; independence 1821. Coups and inequality; hurricanes; many leave for US."
+  },
+  "HUN": {
+    "overview": "Landlocked Central European country. Capital Budapest.",
+    "knownFor": "Thermal baths, goulash, and EU member with illiberal turn.",
+    "quickHistory": "Magyar kingdom; Habsburg then independent. Soviet bloc; 1956 uprising; EU member; Orbán's illiberal democracy."
+  },
+  "ISL": {
+    "overview": "North Atlantic island nation. Capital Reykjavík.",
+    "knownFor": "Geysers, glaciers, Northern Lights, and financial crash and recovery.",
+    "quickHistory": "Settled by Norse; Danish rule; independent 1944. Fishing and aluminium; 2008 crash; tourism boom."
+  },
+  "IND": {
+    "overview": "South Asian giant; second-most populous. Capital New Delhi.",
+    "knownFor": "Taj Mahal, spices, IT, Bollywood, and diversity.",
+    "quickHistory": "Ancient civilization; British Raj; independent 1947. Partition; democracy; economic liberalization; space and tech."
+  },
+  "IDN": {
+    "overview": "Largest archipelago; Southeast Asia. Capital Jakarta.",
+    "knownFor": "Bali, spices, volcanoes, and the world's largest Muslim-majority country.",
+    "quickHistory": "Hindu-Buddhist kingdoms; Dutch East Indies; independent 1945. Sukarno and Suharto; democracy since 1998; huge diversity."
+  },
+  "IRN": {
+    "overview": "Middle Eastern country; Persian heartland. Capital Tehran.",
+    "knownFor": "Persian heritage, carpets, nuclear program, and Islamic Republic.",
+    "quickHistory": "Ancient Persia; 1979 revolution; theocracy. Iran–Iraq war; regional influence; sanctions and protests."
+  },
+  "IRQ": {
+    "overview": "Middle Eastern country; Tigris and Euphrates. Capital Baghdad.",
+    "knownFor": "Mesopotamia, oil, and decades of conflict.",
+    "quickHistory": "Cradle of civilization; British mandate; monarchy then republic. Saddam Hussein; 2003 invasion; sectarian conflict and ISIS."
+  },
+  "IRL": {
+    "overview": "Island in the North Atlantic; EU member. Capital Dublin.",
+    "knownFor": "Pub culture, literature, green landscapes, and tech HQs.",
+    "quickHistory": "British rule; independence 1922 (partial); republic 1949. Celtic Tiger; EU member; Brexit border issue with UK."
+  },
+  "ISR": {
+    "overview": "Eastern Mediterranean country. Capital Jerusalem (disputed).",
+    "knownFor": "Holy sites, tech sector, and conflict with Palestinians.",
+    "quickHistory": "Zionist state 1948; wars with Arab states. Occupation of Palestinian territories; peace with Egypt and Jordan; ongoing conflict."
+  },
+  "ITA": {
+    "overview": "Southern European peninsula and islands. Capital Rome.",
+    "knownFor": "Roman heritage, Renaissance, food, fashion, and Vatican.",
+    "quickHistory": "Roman Empire; city-states; unification 1861. Fascism and WWII; republic; EU founder; debt and politics."
+  },
+  "CIV": {
+    "overview": "West African country on the Gulf of Guinea. Capital Yamoussoukro.",
+    "knownFor": "Cocoa, peacekeeping, and basilica.",
+    "quickHistory": "French Ivory Coast; independent 1960. Houphouët-Boigny; civil war and reconciliation; French military presence."
+  },
+  "JAM": {
+    "overview": "Caribbean island; third-largest of Greater Antilles. Capital Kingston.",
+    "knownFor": "Reggae, Bob Marley, rum, and athletics.",
+    "quickHistory": "British colony; independent 1962. Music and sport; tourism and bauxite; crime and emigration."
+  },
+  "JPN": {
+    "overview": "East Asian island nation. Capital Tokyo.",
+    "knownFor": "Anime, sushi, temples, technology, and cherry blossoms.",
+    "quickHistory": "Emperor and shoguns; Meiji modernization; WWII defeat. Pacifist constitution; economic miracle; aging society."
+  },
+  "JOR": {
+    "overview": "Middle Eastern kingdom; no oil. Capital Amman.",
+    "knownFor": "Petra, desert castles, and refugee hosting.",
+    "quickHistory": "British mandate; independent 1946. Hashemite monarchy; peace with Israel; hosts many refugees; limited resources."
+  },
+  "KAZ": {
+    "overview": "Largest landlocked country; Central Asia. Capital Astana.",
+    "knownFor": "Steppe, oil, Soviet legacy, and Baikonur.",
+    "quickHistory": "Soviet republic; independent 1991. Nazarbayev long rule; oil and gas; multi-ethnic; capital moved to Astana."
+  },
+  "KEN": {
+    "overview": "East African country on the Indian Ocean. Capital Nairobi.",
+    "knownFor": "Safari, marathon runners, tea, and tech hub.",
+    "quickHistory": "British colony; independent 1963. Stability and growth; ethnic tensions and elections; M-Pesa and innovation."
+  },
+  "KOS": {
+    "overview": "Balkan country; independence disputed. Capital Pristina.",
+    "knownFor": "Young state, Albanian majority, and EU aspirations.",
+    "quickHistory": "Part of Serbia/Yugoslavia; 2008 declaration of independence; not recognized by all; EU and NATO path."
+  },
+  "KWT": {
+    "overview": "Small Gulf state. Capital Kuwait City.",
+    "knownFor": "Oil, Gulf War, and constitutional monarchy.",
+    "quickHistory": "British protectorate; independent 1961. Iraqi invasion 1990; liberated by coalition; oil wealth and parliament."
+  },
+  "KGZ": {
+    "overview": "Landlocked Central Asian country. Capital Bishkek.",
+    "knownFor": "Mountains, nomad heritage, and revolutions.",
+    "quickHistory": "Soviet republic; independent 1991. Two revolutions; Russian base; remittances and instability."
+  },
+  "LAO": {
+    "overview": "Landlocked Southeast Asian country. Capital Vientiane.",
+    "knownFor": "Mekong, Buddhist temples, and one-party state.",
+    "quickHistory": "French Indochina; independent 1953. Secret bombing during Vietnam War; communist rule; hydropower and Chinese influence."
+  },
+  "LVA": {
+    "overview": "Baltic country on the Gulf of Riga. Capital Riga.",
+    "knownFor": "Art Nouveau, song festivals, and EU member.",
+    "quickHistory": "Soviet 1940–1991; independent again. EU and NATO; emigration and demographic concerns."
+  },
+  "LBN": {
+    "overview": "Eastern Mediterranean country. Capital Beirut.",
+    "knownFor": "Cedar, sectarian politics, and cultural legacy.",
+    "quickHistory": "French mandate; independent 1943. Civil war; Syrian and Israeli involvement; port blast 2020; economic collapse."
+  },
+  "LSO": {
+    "overview": "Landlocked kingdom surrounded by South Africa. Capital Maseru.",
+    "knownFor": "Highlands, diamonds, and HIV challenges.",
+    "quickHistory": "British Basutoland; independent 1966. Constitutional monarchy; dependent on South Africa; diamond mining."
+  },
+  "LBR": {
+    "overview": "West African country; founded by freed slaves. Capital Monrovia.",
+    "knownFor": "Liberian civil wars, rubber, and Ebola.",
+    "quickHistory": "Founded 1847 by US freed slaves. Tubman; coups and civil wars; Ebola 2014; peace and recovery."
+  },
+  "LBY": {
+    "overview": "North African country; mostly desert. Capital Tripoli.",
+    "knownFor": "Oil, ancient sites, and post-Gaddafi chaos.",
+    "quickHistory": "Italian then independent 1951. Gaddafi 1969–2011; revolution and civil conflict; two rival governments."
+  },
+  "LTU": {
+    "overview": "Baltic country on the Baltic Sea. Capital Vilnius.",
+    "knownFor": "Amber, medieval Old Town, and EU member.",
+    "quickHistory": "Grand Duchy; Polish–Lithuanian; Soviet 1940–1991. Independent again; EU and NATO; emigration."
+  },
+  "LUX": {
+    "overview": "Small Western European grand duchy. Capital Luxembourg.",
+    "knownFor": "EU institutions, banking, and high GDP per capita.",
+    "quickHistory": "Independent 1839. EU founding member; multilingual; wealthy and stable."
+  },
+  "MDG": {
+    "overview": "Large island off East Africa. Capital Antananarivo.",
+    "knownFor": "Lemurs, vanilla, and unique wildlife.",
+    "quickHistory": "French colony; independent 1960. Political instability; biodiversity; poverty and cyclones."
+  },
+  "MWI": {
+    "overview": "Landlocked East African country. Capital Lilongwe.",
+    "knownFor": "Lake Malawi, tea, and dependence on aid.",
+    "quickHistory": "British Nyasaland; independent 1964. Banda long rule; democracy; one of poorest; tobacco and tea."
+  },
+  "MYS": {
+    "overview": "Southeast Asian country; peninsula and Borneo. Capital Kuala Lumpur.",
+    "knownFor": "Petronas Towers, rainforest, and multicultural society.",
+    "quickHistory": "British Malaya; independent 1957; Malaysia 1963. Authoritarian then reform; palm oil and electronics."
+  },
+  "MLI": {
+    "overview": "Landlocked West African country; Sahel. Capital Bamako.",
+    "knownFor": "Timbuktu, music, and jihadist conflict.",
+    "quickHistory": "Mali Empire; French Sudan; independent 1960. Coups; north occupied by jihadists; French and UN intervention."
+  },
+  "MRT": {
+    "overview": "Northwest African country; Sahara and Atlantic. Capital Nouakchott.",
+    "knownFor": "Desert, iron ore, and slavery legacy.",
+    "quickHistory": "French colony; independent 1960. Arab–Black African tension; fishing and mining; ongoing slavery concerns."
+  },
+  "MEX": {
+    "overview": "North American country; Pacific and Gulf. Capital Mexico City.",
+    "knownFor": "Ancient civilizations, tacos, tequila, and diaspora.",
+    "quickHistory": "Aztec and Maya; Spanish colony; independence 1821. Revolution 1910; PRI dominance; NAFTA; drug violence and migration."
+  },
+  "MDA": {
+    "overview": "Landlocked Eastern European country. Capital Chișinău.",
+    "knownFor": "Wine, Transnistria conflict, and EU aspiration.",
+    "quickHistory": "Soviet Moldova; independent 1991. Transnistria breakaway; Russian troops; EU candidate; emigration."
+  },
+  "MNG": {
+    "overview": "Landlocked between Russia and China; steppe. Capital Ulaanbaatar.",
+    "knownFor": "Genghis Khan, nomads, and mining.",
+    "quickHistory": "Mongol Empire; Qing then Soviet influence. Independent 1921; democracy 1990; coal and copper; harsh winters."
+  },
+  "MNE": {
+    "overview": "Small Balkan country on the Adriatic. Capital Podgorica.",
+    "knownFor": "Bay of Kotor, mountains, and NATO member.",
+    "quickHistory": "Part of Yugoslavia then Serbia; independent 2006. EU and NATO candidate; tourism."
+  },
+  "MAR": {
+    "overview": "North African country; Atlantic and Mediterranean. Capital Rabat.",
+    "knownFor": "Marrakesh, souks, Sahara, and French influence.",
+    "quickHistory": "Berber and Arab; French and Spanish protectorates; independent 1956. Monarchy; stability; tourism and migration."
+  },
+  "MOZ": {
+    "overview": "Southeast African country; long coast. Capital Maputo.",
+    "knownFor": "Beaches, civil war legacy, and gas discoveries.",
+    "quickHistory": "Portuguese colony; independent 1975. Long civil war; RENAMO; recent gas and debt crisis."
+  },
+  "MMR": {
+    "overview": "Southeast Asian country; formerly Burma. Capital Naypyidaw.",
+    "knownFor": "Pagan, Aung San Suu Kyi, and military coup.",
+    "quickHistory": "British Burma; independent 1948. Military rule; brief opening; 2021 coup; Rohingya crisis."
+  },
+  "NAM": {
+    "overview": "Southwest African country; sparse population. Capital Windhoek.",
+    "knownFor": "Etosha, desert, and German colonial legacy.",
+    "quickHistory": "German then South African; independent 1990. Stable democracy; mining and tourism."
+  },
+  "NPL": {
+    "overview": "Himalayan country between India and China. Capital Kathmandu.",
+    "knownFor": "Everest, Hinduism and Buddhism, and monarchy to republic.",
+    "quickHistory": "Kingdom; never colonized. Maoist insurgency; republic 2008; earthquake 2015; remittances."
+  },
+  "NLD": {
+    "overview": "Northwest European country; below sea level. Capital Amsterdam.",
+    "knownFor": "Tulips, canals, cycling, and tolerance.",
+    "quickHistory": "Dutch Republic; kingdom. Neutral in WWII; EU founder; liberal society; Rotterdam port."
+  },
+  "NCL": {
+    "overview": "French Pacific territory. Capital Nouméa.",
+    "knownFor": "Nickel, Kanak culture, and independence referendums.",
+    "quickHistory": "French since 1853; referendums on independence (narrowly stayed French); nickel mining."
+  },
+  "NZL": {
+    "overview": "South Pacific country; two main islands. Capital Wellington.",
+    "knownFor": "Rugby, Lord of the Rings, sheep, and Māori culture.",
+    "quickHistory": "British colony; independent 1947. Nuclear-free; progressive; agriculture and tourism."
+  },
+  "NIC": {
+    "overview": "Central American country; largest in region. Capital Managua.",
+    "knownFor": "Lakes, volcanoes, and Sandinista history.",
+    "quickHistory": "Spanish colony; independence 1821. Somoza; Sandinista revolution; Contra war; Ortega's return and authoritarian turn."
+  },
+  "NER": {
+    "overview": "Landlocked West African country; Sahel. Capital Niamey.",
+    "knownFor": "Uranium, desert, and jihadist threat.",
+    "quickHistory": "French colony; independent 1960. Coups; French and US bases; one of world's poorest."
+  },
+  "NGA": {
+    "overview": "Africa's most populous country. Capital Abuja.",
+    "knownFor": "Oil, Nollywood, and megacity Lagos.",
+    "quickHistory": "British colony; independent 1960. Civil war; military and civilian rule; Boko Haram; huge population and economy."
+  },
+  "PRK": {
+    "overview": "East Asian one-party state. Capital Pyongyang.",
+    "knownFor": "Nuclear program, isolation, and dynastic rule.",
+    "quickHistory": "Divided 1945; Korean War; Kim dynasty. Juche; nuclear tests; one of most closed societies."
+  },
+  "MKD": {
+    "overview": "Balkan country; name disputed with Greece. Capital Skopje.",
+    "knownFor": "Alexander heritage debate, Lake Ohrid, and NATO member.",
+    "quickHistory": "Yugoslav republic; independent 1991. Name dispute (North Macedonia 2019); EU candidate."
+  },
+  "CYN": {
+    "overview": "De facto state in northern Cyprus; only Turkey recognizes. Capital North Nicosia.",
+    "knownFor": "Beach tourism and Turkish Cypriot community.",
+    "quickHistory": "Declared 1983 after Turkish invasion of Cyprus; not internationally recognized."
+  },
+  "NOR": {
+    "overview": "Nordic country; long coast and fjords. Capital Oslo.",
+    "knownFor": "Fjords, oil, peace prize, and outdoor life.",
+    "quickHistory": "Viking age; union with Denmark then Sweden; independent 1905. Oil wealth; high equality; outside EU."
+  },
+  "OMN": {
+    "overview": "Gulf state on Arabian Peninsula. Capital Muscat.",
+    "knownFor": "Frankincense, Sultan's modernization, and neutrality.",
+    "quickHistory": "Portuguese then Omani empire; British influence; Sultan Qaboos 1970–2020; balanced foreign policy."
+  },
+  "PAK": {
+    "overview": "South Asian country; Indus and mountains. Capital Islamabad.",
+    "knownFor": "K2, Mughal heritage, and nuclear power.",
+    "quickHistory": "Part of British India; independent 1947. Military coups; Kashmir conflict; Taliban and terrorism; large population."
+  },
+  "PSX": {
+    "overview": "Palestinian territories; Gaza and West Bank. Capital (claimed) Jerusalem.",
+    "knownFor": "Holy sites, occupation, and statehood struggle.",
+    "quickHistory": "British mandate; 1948 partition; Israeli occupation 1967. Fatah and Hamas; no full statehood."
+  },
+  "PAN": {
+    "overview": "Central American isthmus; canal. Capital Panama City.",
+    "knownFor": "Panama Canal, banking, and biodiversity.",
+    "quickHistory": "Spanish then Colombian; independent 1903 with US support. Canal handed to Panama 1999; banking and logistics."
+  },
+  "PNG": {
+    "overview": "Pacific country; half of New Guinea island. Capital Port Moresby.",
+    "knownFor": "Tribal diversity, languages, and mining.",
+    "quickHistory": "Australian territory; independent 1975. Many languages; mining and gas; law and order challenges."
+  },
+  "PRY": {
+    "overview": "Landlocked South American country. Capital Asunción.",
+    "knownFor": "Guaraní, yerba mate, and Chaco.",
+    "quickHistory": "Spanish colony; independence 1811. Stroessner dictatorship; democracy; soy and hydroelectric."
+  },
+  "PER": {
+    "overview": "Pacific and Amazon country; Andes. Capital Lima.",
+    "knownFor": "Machu Picchu, Inca heritage, and gastronomy.",
+    "quickHistory": "Inca Empire; Spanish conquest; independence 1821. Shining Path; Fujimori; growth and political instability."
+  },
+  "PHL": {
+    "overview": "Southeast Asian archipelago; 7,000+ islands. Capital Manila.",
+    "knownFor": "Overseas workers, beaches, and Catholicism.",
+    "quickHistory": "Spanish then US; independent 1946. Marcos and People Power; OFWs; Duterte; typhoons."
+  },
+  "POL": {
+    "overview": "Central European country; Baltic coast. Capital Warsaw.",
+    "knownFor": "Solidarity, pierogi, and EU member.",
+    "quickHistory": "Partitions; WWII devastation; communist; Solidarity 1980s. Democratic 1989; EU and NATO; rule-of-law tensions."
+  },
+  "PRT": {
+    "overview": "Southwest European country; Atlantic. Capital Lisbon.",
+    "knownFor": "Fado, explorers, port wine, and affordable living.",
+    "quickHistory": "Kingdom; colonial empire. Carnation Revolution 1974; EU member; tourism and emigration."
+  },
+  "PRI": {
+    "overview": "Caribbean US territory. Capital San Juan.",
+    "knownFor": "Salsa, rum, and status debate.",
+    "quickHistory": "Spanish then US 1898. Commonwealth; debt crisis; hurricanes; statehood vs independence debate."
+  },
+  "QAT": {
+    "overview": "Small Gulf peninsula. Capital Doha.",
+    "knownFor": "Gas wealth, Al Jazeera, and World Cup 2022.",
+    "quickHistory": "British; independent 1971. Al Thani rule; huge gas reserves; regional mediator; labor and rights criticism."
+  },
+  "SRB": {
+    "overview": "Balkan country; no coastline. Capital Belgrade.",
+    "knownFor": "Orthodox heritage, Kosovo dispute, and EU path.",
+    "quickHistory": "Yugoslav core; Milošević; NATO bombing 1999. Kosovo independence disputed; EU candidate."
+  },
+  "COG": {
+    "overview": "Central African country on the equator. Capital Brazzaville.",
+    "knownFor": "Oil, Congo River, and French influence.",
+    "quickHistory": "French Congo; independent 1960. Sassou-Nguesso long rule; oil-dependent."
+  },
+  "ROU": {
+    "overview": "Southeast European country; Black Sea. Capital Bucharest.",
+    "knownFor": "Dracula, Ceaușescu, and EU member.",
+    "quickHistory": "Roman then Ottoman influence; kingdom; communist; revolution 1989. EU member; emigration and corruption."
+  },
+  "RUS": {
+    "overview": "Largest country by area; spans Europe and Asia. Capital Moscow.",
+    "knownFor": "Vodka, literature, space program, and authoritarian turn.",
+    "quickHistory": "Tsarist empire; USSR 1922–1991. Putin era; annexation of Crimea; war on Ukraine; sanctions."
+  },
+  "RWA": {
+    "overview": "Landlocked East African country. Capital Kigali.",
+    "knownFor": "Gorillas, genocide memory, and development model.",
+    "quickHistory": "Belgian Rwanda; independent 1962. Genocide 1994; Kagame's recovery and authoritarian development."
+  },
+  "SAU": {
+    "overview": "Arabian Peninsula; birthplace of Islam. Capital Riyadh.",
+    "knownFor": "Oil, Mecca and Medina, and Vision 2030.",
+    "quickHistory": "Kingdom 1932; oil from 1938. US alliance; Wahhabism; crown prince's reforms and repression."
+  },
+  "SEN": {
+    "overview": "West African country on the Atlantic. Capital Dakar.",
+    "knownFor": "Teranga, peanut basin, and democratic stability.",
+    "quickHistory": "French colony; independent 1960. Senghor; stable democracy; French military base; wrestling and arts."
+  },
+  "SLE": {
+    "overview": "West African country on the Atlantic. Capital Freetown.",
+    "knownFor": "Diamonds, civil war, and Ebola.",
+    "quickHistory": "British colony for freed slaves; independent 1961. Brutal civil war; diamonds; Ebola 2014; recovery."
+  },
+  "SVK": {
+    "overview": "Landlocked Central European country. Capital Bratislava.",
+    "knownFor": "Tatra Mountains, EU member, and eurozone.",
+    "quickHistory": "Czechoslovakia; split 1993. EU and NATO; car industry; political turbulence."
+  },
+  "SVN": {
+    "overview": "Small Alpine and Adriatic country. Capital Ljubljana.",
+    "knownFor": "Alps, Lake Bled, and EU member.",
+    "quickHistory": "Yugoslav republic; independent 1991 (brief war). EU and NATO; prosperous; Schengen."
+  },
+  "SLB": {
+    "overview": "Pacific island nation; Melanesia. Capital Honiara.",
+    "knownFor": "Coral reefs, WWII history, and logging.",
+    "quickHistory": "British protectorate; independent 1978. Ethnic tension; RAMSI; logging and fisheries."
+  },
+  "SOM": {
+    "overview": "Horn of Africa; long coastline. Capital Mogadishu.",
+    "knownFor": "Piracy, civil war, and fragile government.",
+    "quickHistory": "Italian and British; independent 1960. Collapse 1991; Al-Shabaab; African Union mission; no full stability."
+  },
+  "SOL": {
+    "overview": "De facto state in Somalia; limited recognition. Capital Hargeisa.",
+    "knownFor": "Livestock, remittances, and relative stability.",
+    "quickHistory": "Declared independent 1991; not recognized; more stable than Somalia."
+  },
+  "ZAF": {
+    "overview": "Southern tip of Africa. Capital Pretoria; Cape Town legislative.",
+    "knownFor": "Apartheid history, Mandela, wildlife, and diversity.",
+    "quickHistory": "British and Boer; apartheid 1948–1994. Democratic 1994; inequality and crime; BRICS; diverse economy."
+  },
+  "KOR": {
+    "overview": "East Asian peninsula; divided. Capital Seoul.",
+    "knownFor": "K-pop, Samsung, demilitarized zone, and rapid development.",
+    "quickHistory": "Japanese colony; divided 1945; Korean War. Authoritarian then democracy; tech and culture export."
+  },
+  "SDS": {
+    "overview": "Landlocked East African country; youngest state. Capital Juba.",
+    "knownFor": "Oil, independence 2011, and civil war.",
+    "quickHistory": "Part of Sudan; independent 2011. Civil war 2013–2020; fragile peace; oil and humanitarian crisis."
+  },
+  "ESP": {
+    "overview": "Southwest European country; Iberian Peninsula. Capital Madrid.",
+    "knownFor": "Flamenco, paella, siesta, and regional diversity.",
+    "quickHistory": "Reconquista; empire; civil war 1936–1939. Franco; democracy 1975; EU; Catalonia and Basque."
+  },
+  "LKA": {
+    "overview": "Island off South India. Capital Colombo.",
+    "knownFor": "Tea, Buddhism, and civil war legacy.",
+    "quickHistory": "British Ceylon; independent 1948. Tamil conflict ended 2009; Buddhist majority; economic crisis 2022."
+  },
+  "SDN": {
+    "overview": "Northeast African country; Nile. Capital Khartoum.",
+    "knownFor": "Pyramids of Meroë, oil, and conflict.",
+    "quickHistory": "British–Egyptian condominium; independent 1956. Coups; Darfur; South Sudan secession 2011; recent war."
+  },
+  "SUR": {
+    "overview": "Small country on north South American coast. Capital Paramaribo.",
+    "knownFor": "Dutch-speaking, rainforest, and bauxite.",
+    "quickHistory": "Dutch Guiana; independent 1975. Coups then democracy; ethnic diversity; gold and bauxite."
+  },
+  "SWE": {
+    "overview": "Nordic country; long coast. Capital Stockholm.",
+    "knownFor": "IKEA, ABBA, welfare state, and neutrality.",
+    "quickHistory": "Viking age; empire then neutrality. WWII neutral; high equality; EU member; NATO application."
+  },
+  "CHE": {
+    "overview": "Landlocked Alpine country. Capital Bern.",
+    "knownFor": "Chocolate, banks, neutrality, and Alps.",
+    "quickHistory": "Confederation; never in EU. Neutral in wars; direct democracy; high quality of life; banking and pharma."
+  },
+  "SYR": {
+    "overview": "Eastern Mediterranean country; in civil war. Capital Damascus.",
+    "knownFor": "Ancient cities, war, and refugee crisis.",
+    "quickHistory": "French mandate; independent 1946. Assad family; civil war since 2011; millions displaced; Russian and Iranian backing."
+  },
+  "TWN": {
+    "overview": "Island off China; de facto independent. Capital Taipei.",
+    "knownFor": "Tech (TSMC), night markets, and sovereignty dispute.",
+    "quickHistory": "Chinese then Japanese; KMT rule from 1949. Democracy; China claims; semiconductor hub."
+  },
+  "TJK": {
+    "overview": "Landlocked Central Asian country. Capital Dushanbe.",
+    "knownFor": "Mountains, Soviet legacy, and remittances.",
+    "quickHistory": "Soviet republic; independent 1991. Civil war; Rahmon long rule; dependent on Russia; Pamir Highway."
+  },
+  "THA": {
+    "overview": "Southeast Asian kingdom. Capital Bangkok.",
+    "knownFor": "Temples, street food, and tourism.",
+    "quickHistory": "Never colonized. Constitutional monarchy; coups; tourism and manufacturing; political turmoil."
+  },
+  "BHS": {
+    "overview": "Caribbean archipelago. Capital Nassau.",
+    "knownFor": "Offshore finance, beaches, and hurricanes.",
+    "quickHistory": "British colony; independent 1973. Tourism and finance; hurricane damage; close to US."
+  },
+  "TGO": {
+    "overview": "Narrow West African country. Capital Lomé.",
+    "knownFor": "Phosphates, voodoo, and long Eyadéma rule.",
+    "quickHistory": "French Togoland; independent 1960. Eyadéma dynasty; political unrest; cotton and phosphates."
+  },
+  "TTO": {
+    "overview": "Twin-island Caribbean country. Capital Port of Spain.",
+    "knownFor": "Carnival, oil and gas, and steelpan.",
+    "quickHistory": "British colony; independent 1962. Oil and gas; multicultural; Carnival; high income."
+  },
+  "TUN": {
+    "overview": "North African country; Mediterranean. Capital Tunis.",
+    "knownFor": "Arab Spring birth, Roman ruins, and beaches.",
+    "quickHistory": "French protectorate; independent 1956. Ben Ali; revolution 2011; democratic transition; economic struggles."
+  },
+  "TUR": {
+    "overview": "Transcontinental country; Europe and Asia. Capital Ankara.",
+    "knownFor": "Istanbul, Ottoman heritage, and Erdogan.",
+    "quickHistory": "Ottoman Empire; republic 1923 (Atatürk). Coups; EU candidate; Erdogan's authoritarian turn; Syria and refugees."
+  },
+  "TKM": {
+    "overview": "Central Asian country; Caspian coast. Capital Ashgabat.",
+    "knownFor": "Gas, marble city, and isolation.",
+    "quickHistory": "Soviet republic; independent 1991. Niyazov personality cult; gas wealth; neutral; closed society."
+  },
+  "UGA": {
+    "overview": "Landlocked East African country. Capital Kampala.",
+    "knownFor": "Lake Victoria, gorillas, and Museveni long rule.",
+    "quickHistory": "British Uganda; independent 1962. Amin; Museveni since 1986; growth and authoritarianism."
+  },
+  "UKR": {
+    "overview": "Eastern European country; second-largest in Europe. Capital Kyiv.",
+    "knownFor": "Chernobyl, wheat, and war with Russia.",
+    "quickHistory": "Kievan Rus; Russian and Polish rule. Independent 1991; Orange Revolution; Maidan 2014; full-scale invasion 2022."
+  },
+  "ARE": {
+    "overview": "Gulf federation of seven emirates. Capital Abu Dhabi.",
+    "knownFor": "Dubai, oil, and expat workforce.",
+    "quickHistory": "British; federation 1971. Dubai and Abu Dhabi; oil and tourism; foreign labor; progressive in region."
+  },
+  "GBR": {
+    "overview": "Island nation; England, Scotland, Wales, Northern Ireland. Capital London.",
+    "knownFor": "Monarchy, BBC, and Brexit.",
+    "quickHistory": "British Empire; industrial revolution. WWII; decolonization; EU then Brexit; devolution."
+  },
+  "TZA": {
+    "overview": "East African country; Kilimanjaro and Zanzibar. Capital Dodoma.",
+    "knownFor": "Safari, Kilimanjaro, and Swahili coast.",
+    "quickHistory": "Tanganyika and Zanzibar united 1964. Nyerere; stability; tourism and gold; HIV and development."
+  },
+  "USA": {
+    "overview": "Large North American country; Atlantic to Pacific. Capital Washington, D.C.",
+    "knownFor": "Hollywood, tech, democracy, and diversity.",
+    "quickHistory": "British colonies; independence 1776. Civil war; world wars; superpower; polarization and inequality."
+  },
+  "URY": {
+    "overview": "Small South American country on the Atlantic. Capital Montevideo.",
+    "knownFor": "Beaches, mate, and stable democracy.",
+    "quickHistory": "Spanish then Brazilian; independent 1828. Military rule then restoration; progressive; football and beef."
+  },
+  "UZB": {
+    "overview": "Landlocked Central Asia; Silk Road. Capital Tashkent.",
+    "knownFor": "Samarkand, cotton, and post-Soviet opening.",
+    "quickHistory": "Soviet republic; independent 1991. Karimov long rule; gradual opening; heritage tourism."
+  },
+  "VUT": {
+    "overview": "Pacific island nation; Melanesia. Capital Port Vila.",
+    "knownFor": "Volcanoes, diving, and off-shore finance.",
+    "quickHistory": "British–French condominium; independent 1980. Cyclones; tourism and agriculture."
+  },
+  "VEN": {
+    "overview": "North South American country; Caribbean coast. Capital Caracas.",
+    "knownFor": "Oil, crisis, and Bolivarian revolution.",
+    "quickHistory": "Spanish colony; independence 1811. Chavez and Maduro; economic collapse; migration; oil reserves."
+  },
+  "VNM": {
+    "overview": "Southeast Asian country; long coast. Capital Hanoi.",
+    "knownFor": "Pho, war history, and manufacturing boom.",
+    "quickHistory": "French Indochina; Vietnam War; unified 1976. Doi Moi reform; manufacturing; tourism and growth."
+  },
+  "SAH": {
+    "overview": "Disputed territory in northwest Africa. Capital (claimed) El-Aaiún.",
+    "knownFor": "Phosphates and independence movement.",
+    "quickHistory": "Spanish Sahara; Morocco claims and controls most; Polisario and refugee camps in Algeria."
+  },
+  "YEM": {
+    "overview": "Arabian Peninsula; south. Capital Sana'a (disputed).",
+    "knownFor": "Ancient Arabia, war, and humanitarian crisis.",
+    "quickHistory": "North and South Yemen united 1990. Houthi takeover; Saudi-led war; famine and cholera; fragile state."
+  },
+  "ZMB": {
+    "overview": "Landlocked southern African country. Capital Lusaka.",
+    "knownFor": "Victoria Falls, copper, and peace.",
+    "quickHistory": "British Northern Rhodesia; independent 1964. Kaunda; copper; stable democracy; Chinese investment."
+  },
+  "ZWE": {
+    "overview": "Landlocked southern African country. Capital Harare.",
+    "knownFor": "Victoria Falls, hyperinflation, and Mugabe legacy.",
+    "quickHistory": "British Rhodesia; independent 1980. Mugabe long rule; land reform; economic collapse; Mnangagwa."
+  },
+  "SWZ": {
+    "overview": "Small landlocked kingdom in southern Africa. Capital Mbabane.",
+    "knownFor": "King Mswati III, sugar, and HIV.",
+    "quickHistory": "British Swaziland; independent 1968. Absolute monarchy; renamed eSwatini 2018; high HIV prevalence."
+  }
+}

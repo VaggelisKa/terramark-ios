@@ -76,7 +76,7 @@ struct WantToVisitListView: View {
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
         .sheet(item: $selectedCountry) { selection in
-            CountryStatusSheet(selection: selection, store: store)
+            CountryDescriptionSheet(selection: selection, store: store)
         }
     }
 }
