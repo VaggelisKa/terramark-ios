@@ -4,6 +4,11 @@
 //
 
 import SwiftUI
+import UIKit
+
+private func dismissKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+}
 
 struct GoalCreationSheet: View {
     @Environment(\.dismiss) private var dismiss
@@ -17,6 +22,7 @@ struct GoalCreationSheet: View {
     @State private var targetDate: Date?
     @State private var customTitle: String = ""
     @State private var showingCountryPicker = false
+    @State private var isKeyboardVisible = false
 
     enum GoalType: String, CaseIterable {
         case countries = "Visit N countries"
@@ -140,6 +146,7 @@ struct GoalCreationSheet: View {
                     }
                 }
             }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("New goal")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -150,6 +157,20 @@ struct GoalCreationSheet: View {
                     Button("Save") { saveAndDismiss() }
                         .disabled(!canSave)
                 }
+            }
+            .overlay {
+                if isKeyboardVisible {
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .onTapGesture { dismissKeyboard() }
+                        .ignoresSafeArea()
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                isKeyboardVisible = true
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                isKeyboardVisible = false
             }
             .sheet(isPresented: $showingCountryPicker) {
                 CountryGoalPickerSheet(store: store, selectedIds: $selectedCountryIds)
