@@ -4,11 +4,6 @@
 //
 
 import SwiftUI
-import UIKit
-
-private func dismissKeyboard() {
-    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-}
 
 struct GoalCreationSheet: View {
     @Environment(\.dismiss) private var dismiss
@@ -22,7 +17,14 @@ struct GoalCreationSheet: View {
     @State private var targetDate: Date?
     @State private var customTitle: String = ""
     @State private var showingCountryPicker = false
-    @State private var isKeyboardVisible = false
+    @FocusState private var isGoalNameFocused: Bool
+    @State private var selectedTab: GoalSheetTab = .newGoal
+    @State private var showingSavedToast = false
+
+    enum GoalSheetTab: String, CaseIterable {
+        case newGoal = "New goal"
+        case myGoals = "My goals"
+    }
 
     enum GoalType: String, CaseIterable {
         case countries = "Visit N countries"
@@ -46,15 +48,58 @@ struct GoalCreationSheet: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    Picker("Goal type", selection: $goalType) {
-                        ForEach(GoalType.allCases, id: \.self) { type in
-                            Text(type.rawValue).tag(type)
-                        }
+            VStack(spacing: 0) {
+                Picker("", selection: $selectedTab) {
+                    ForEach(GoalSheetTab.allCases, id: \.self) { tab in
+                        Text(tab.rawValue).tag(tab)
                     }
+                }
+                .pickerStyle(.segmented)
+                .padding()
 
-                    switch goalType {
+                switch selectedTab {
+                case .newGoal:
+                    Form {
+                        newGoalContent
+                    }
+                    .scrollDismissesKeyboard(.interactively)
+                case .myGoals:
+                    myGoalsView
+                }
+            }
+            .background(Color(uiColor: .systemGroupedBackground))
+            .navigationTitle("Goals")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
+                }
+                if selectedTab == .newGoal {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Save") { saveAndDismiss() }
+                            .disabled(!canSave)
+                    }
+                }
+            }
+            .overlay(keyboardDismissOverlay)
+            .overlay(savedToast)
+            .sheet(isPresented: $showingCountryPicker) {
+                CountryGoalPickerSheet(store: store, selectedIds: $selectedCountryIds)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var newGoalContent: some View {
+        Group {
+            Section {
+                Picker("Goal type", selection: $goalType) {
+                    ForEach(GoalType.allCases, id: \.self) { type in
+                        Text(type.rawValue).tag(type)
+                    }
+                }
+
+                switch goalType {
                     case .countries:
                         HStack {
                             Text("Target")
@@ -118,63 +163,76 @@ struct GoalCreationSheet: View {
                     }
                 }
 
-                Section {
-                    TextField("Goal name (optional)", text: $customTitle)
-                }
+            Section {
+                TextField("Goal name (optional)", text: $customTitle)
+                    .focused($isGoalNameFocused)
+            }
+        }
+    }
 
-                if !goalStore.goals.isEmpty {
-                    Section("Your goals") {
-                        ForEach(goalStore.goals) { goal in
-                            HStack {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(goal.title ?? goalDisplayTitle(goal))
-                                        .font(.subheadline.weight(.medium))
-                                    Text(goal.kind.label + (goal.targetDate.map { " · by \(Self.dateFormatter.string(from: $0))" } ?? ""))
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                progressLabel(goal: goal)
-                            }
+    @ViewBuilder
+    private var myGoalsView: some View {
+        if goalStore.goals.isEmpty {
+            ContentUnavailableView {
+                Label("No goals yet", systemImage: "target")
+            } description: {
+                Text("Switch to \"New goal\" to add one.")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
+            List {
+                ForEach(goalStore.goals) { goal in
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(goal.title ?? goalDisplayTitle(goal))
+                                .font(.subheadline.weight(.medium))
+                            Text(goal.kind.label + (goal.targetDate.map { " · by \(Self.dateFormatter.string(from: $0))" } ?? ""))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
-                        .onDelete { indexSet in
-                            let toRemove = indexSet.compactMap { i in
-                                i < goalStore.goals.count ? goalStore.goals[i] : nil
-                            }
-                            for goal in toRemove { goalStore.remove(goal) }
-                        }
+                        Spacer()
+                        progressLabel(goal: goal)
                     }
                 }
+                .onDelete { indexSet in
+                    let toRemove = indexSet.compactMap { i in
+                        i < goalStore.goals.count ? goalStore.goals[i] : nil
+                    }
+                    for goal in toRemove { goalStore.remove(goal) }
+                }
             }
+            .listStyle(.insetGrouped)
             .scrollDismissesKeyboard(.interactively)
-            .navigationTitle("New goal")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") { saveAndDismiss() }
-                        .disabled(!canSave)
-                }
+        }
+    }
+
+    @ViewBuilder
+    private var keyboardDismissOverlay: some View {
+        Color.clear
+            .contentShape(Rectangle())
+            .onTapGesture { isGoalNameFocused = false }
+            .ignoresSafeArea()
+            .allowsHitTesting(isGoalNameFocused)
+    }
+
+    @ViewBuilder
+    private var savedToast: some View {
+        if showingSavedToast {
+            HStack(spacing: 8) {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title3)
+                Text("Goal saved")
+                    .font(.subheadline.weight(.medium))
             }
-            .overlay {
-                if isKeyboardVisible {
-                    Color.clear
-                        .contentShape(Rectangle())
-                        .onTapGesture { dismissKeyboard() }
-                        .ignoresSafeArea()
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                isKeyboardVisible = true
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                isKeyboardVisible = false
-            }
-            .sheet(isPresented: $showingCountryPicker) {
-                CountryGoalPickerSheet(store: store, selectedIds: $selectedCountryIds)
-            }
+            .foregroundStyle(.white)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
+            .background(Color.black.opacity(0.75), in: Capsule())
+            .padding(.bottom, 32)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .allowsHitTesting(false)
+            .transition(.opacity.combined(with: .scale(scale: 0.9)))
+            .animation(.easeOut(duration: 0.25), value: showingSavedToast)
         }
     }
 
@@ -225,7 +283,23 @@ struct GoalCreationSheet: View {
         }
         let title = customTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         goalStore.add(Goal(kind: kind, title: title.isEmpty ? nil : title, targetDate: targetDate))
-        dismiss()
+        resetForm()
+        showingSavedToast = true
+        Task { @MainActor in
+            try? await Task.sleep(for: .seconds(1.5))
+            showingSavedToast = false
+            dismiss()
+        }
+    }
+
+    private func resetForm() {
+        goalType = .countries
+        countriesTarget = 50
+        percentageTarget = 25
+        selectedCountryIds = []
+        targetDate = nil
+        customTitle = ""
+        isGoalNameFocused = false
     }
 }
 
