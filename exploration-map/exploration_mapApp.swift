@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct exploration_mapApp: App {
     @State private var store = CountryStore()
+    @State private var goalStore = GoalStore()
     @State private var showSplash = true
 
     var body: some Scene {
         WindowGroup {
             ZStack {
-                MapScreen()
-                    .environment(store)
+                MapScreen(store: store, goalStore: goalStore)
                     .opacity(showSplash ? 0 : 1)
 
                 if showSplash {

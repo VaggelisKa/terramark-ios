@@ -35,11 +35,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C73314F2F3509150011723D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1CF4AC012F3143E900AD3142 /* FoundationModels.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		1CF4ABEF2F3143E900AD3142 = {
 			isa = PBXGroup;
 			children = (
 				1CF4ABFA2F3143E900AD3142 /* exploration-map */,
 				1CF4ABF92F3143E900AD3142 /* Products */,
+				1C73314F2F3509150011723D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +269,7 @@
 				DEVELOPMENT_TEAM = BN8VYT9W96;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exploration map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -292,6 +302,7 @@
 				DEVELOPMENT_TEAM = BN8VYT9W96;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exploration map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -81,11 +81,18 @@ struct CountryDescriptionSheet: View {
 
     @MainActor
     private func loadInsights() async {
+        if let cached = TravelInsightsService.cachedInsights(for: selection.id) {
+            aiInsights = cached
+            insightsError = nil
+            return
+        }
         isLoadingInsights = true
         insightsError = nil
         defer { isLoadingInsights = false }
         do {
-            aiInsights = try await TravelInsightsService.generateInsights(for: selection.name)
+            let insights = try await TravelInsightsService.generateInsights(for: selection.name)
+            TravelInsightsService.saveInsights(insights, for: selection.id)
+            aiInsights = insights
         } catch {
             insightsError = error.localizedDescription
         }

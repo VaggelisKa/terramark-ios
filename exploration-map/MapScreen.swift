@@ -6,10 +6,14 @@
 import SwiftUI
 
 struct MapScreen: View {
-    @Environment(CountryStore.self) private var store
+    var store: CountryStore
+    var goalStore: GoalStore
     @State private var selectedCountry: CountrySelection?
     @State private var showingWantToVisitList = false
+    @State private var showingGoalCreation = false
     @State private var isStatsExpanded = UserDefaults.standard.bool(forKey: statsExpandedKey)
+    @State private var showingShareFormatDialog = false
+    @State private var isGeneratingShare = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -44,11 +48,67 @@ struct MapScreen: View {
                         insertion: .opacity.combined(with: .move(edge: .top)),
                         removal: .opacity.combined(with: .move(edge: .top))
                     ))
+
+                    HStack(spacing: 12) {
+                        GlassEffectContainer {
+                            Button {
+                                showingShareFormatDialog = true
+                            } label: {
+                                HStack(spacing: 6) {
+                                    if isGeneratingShare {
+                                        ProgressView()
+                                            .scaleEffect(0.85)
+                                    } else {
+                                        Image(systemName: "square.and.arrow.up")
+                                            .font(.subheadline.weight(.medium))
+                                    }
+                                    Text("Share map")
+                                        .font(.subheadline.weight(.medium))
+                                        .lineLimit(1)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .disabled(isGeneratingShare)
+                            .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        GlassEffectContainer {
+                            Button {
+                                showingGoalCreation = true
+                            } label: {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "target")
+                                        .font(.subheadline.weight(.medium))
+                                    Text("Goal")
+                                        .font(.subheadline.weight(.medium))
+                                        .lineLimit(1)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .glassEffect(.clear, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                    }
+                    .transition(.asymmetric(
+                        insertion: .opacity.combined(with: .move(edge: .top)),
+                        removal: .opacity.combined(with: .move(edge: .top))
+                    ))
                 }
             }
             .animation(.easeInOut(duration: 0.25), value: isStatsExpanded)
             .padding(.horizontal)
             .padding(.bottom, 16)
+        }
+        .confirmationDialog("Share map", isPresented: $showingShareFormatDialog, titleVisibility: .visible) {
+            Button("Screenshot") { shareAsScreenshot() }
+            Button("PDF") { shareAsPDF() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Choose format to share")
         }
         .sheet(item: $selectedCountry) { selection in
             CountryStatusSheet(selection: selection, store: store)
@@ -56,10 +116,37 @@ struct MapScreen: View {
         .sheet(isPresented: $showingWantToVisitList) {
             WantToVisitListView(store: store)
         }
+        .sheet(isPresented: $showingGoalCreation) {
+            GoalCreationSheet(store: store, goalStore: goalStore)
+        }
+        .environment(store)
+    }
+
+    private func shareAsScreenshot() {
+        isGeneratingShare = true
+        Task { @MainActor in
+            let image = await MapShareImageGenerator.generate(store: store)
+            isGeneratingShare = false
+            if let image {
+                SharePresenter.present(activityItems: [image]) { }
+            }
+        }
+    }
+
+    private func shareAsPDF() {
+        isGeneratingShare = true
+        Task { @MainActor in
+            let pdfURL = await MapShareImageGenerator.generatePDF(store: store)
+            isGeneratingShare = false
+            if let pdfURL {
+                SharePresenter.present(activityItems: [pdfURL]) {
+                    try? FileManager.default.removeItem(at: pdfURL)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    MapScreen()
-        .environment(CountryStore())
+    MapScreen(store: CountryStore(), goalStore: GoalStore())
 }
