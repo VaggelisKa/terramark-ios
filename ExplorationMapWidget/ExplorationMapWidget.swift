@@ -142,6 +142,8 @@ struct StatsWidgetMediumView: View {
     var entry: StatsEntry
     var body: some View {
         let s = entry.snapshot
+        let top2 = Array(s.continentStats.prefix(2).filter { $0.percentage > 0 })
+        let otherPercentage = s.continentStats.dropFirst(2).reduce(0.0) { $0 + $1.percentage }
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Text("Stats")
@@ -150,19 +152,24 @@ struct StatsWidgetMediumView: View {
                 Spacer()
             }
             VStack(spacing: 0) {
-                StatRowView(title: "Countries", value: "\(s.totalCountries)")
-                StatDividerView()
                 StatRowView(title: "Visited or lived", value: "\(s.visitedCount)")
                 StatDividerView()
                 StatRowView(
                     title: "World visited or lived",
                     value: String(format: "%.1f%%", s.visitedPercentage * 100.0)
                 )
-                ForEach(Array(s.continentStats.enumerated()), id: \.offset) { _, stat in
+                ForEach(Array(top2.enumerated()), id: \.offset) { _, stat in
                     StatDividerView()
                     StatRowView(
                         title: stat.name,
                         value: String(format: "%.1f%%", stat.percentage * 100.0)
+                    )
+                }
+                if otherPercentage > 0.0 {
+                    StatDividerView()
+                    StatRowView(
+                        title: "Other",
+                        value: String(format: "%.1f%%", otherPercentage * 100.0)
                     )
                 }
             }
