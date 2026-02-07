@@ -120,6 +120,10 @@ struct MapScreen: View {
             GoalCreationSheet(store: store, goalStore: goalStore)
         }
         .environment(store)
+        .onAppear {
+            store.onDataChanged = { writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore) }
+            writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore)
+        }
     }
 
     private func shareAsScreenshot() {

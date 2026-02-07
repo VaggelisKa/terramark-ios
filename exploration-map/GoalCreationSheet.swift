@@ -213,6 +213,7 @@ struct GoalCreationSheet: View {
                         i < goalStore.goals.count ? goalStore.goals[i] : nil
                     }
                     for goal in toRemove { goalStore.remove(goal) }
+                    writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore)
                 }
             }
             .listStyle(.insetGrouped)
@@ -297,6 +298,7 @@ struct GoalCreationSheet: View {
         }
         let title = customTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         goalStore.add(Goal(kind: kind, title: title.isEmpty ? nil : title, targetDate: targetDate))
+        writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore)
         resetForm()
         showingSavedToast = true
         Task { @MainActor in

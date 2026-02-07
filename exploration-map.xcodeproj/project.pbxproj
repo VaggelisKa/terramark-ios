@@ -8,11 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		1CF4AC002F3143E900AD3142 /* FoundationModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF4AC012F3143E900AD3142 /* FoundationModels.framework */; };
+		1CF4AC302F3143E900AD3142 /* ExplorationMapWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4AC312F3143E900AD3142 /* ExplorationMapWidget.swift */; };
+		1CF4AC322F3143E900AD3142 /* ExplorationMapWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1CF4AC332F3143E900AD3142 /* ExplorationMapWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1CF4AC402F3143E900AD3142 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF4AC412F3143E900AD3142 /* WidgetKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1CF4AC3D2F3143E900AD3142 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CF4ABF02F3143E900AD3142 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CF4AC3A2F3143E900AD3142;
+			remoteInfo = ExplorationMapWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1CF4AC362F3143E900AD3142 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1CF4AC322F3143E900AD3142 /* ExplorationMapWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1CF4ABF82F3143E900AD3142 /* exploration-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "exploration-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF4AC012F3143E900AD3142 /* FoundationModels.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationModels.framework; path = System/Library/Frameworks/FoundationModels.framework; sourceTree = SDKROOT; };
+		1CF4AC312F3143E900AD3142 /* ExplorationMapWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationMapWidget.swift; sourceTree = "<group>"; };
+		1CF4AC332F3143E900AD3142 /* ExplorationMapWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExplorationMapWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CF4AC352F3143E900AD3142 /* ExplorationMapWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExplorationMapWidget.entitlements; sourceTree = "<group>"; };
+		1CF4AC412F3143E900AD3142 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -29,6 +60,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF4AC002F3143E900AD3142 /* FoundationModels.framework in Frameworks */,
+				1CF4AC402F3143E900AD3142 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CF4AC372F3143E900AD3142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				1CF4AC012F3143E900AD3142 /* FoundationModels.framework */,
+				1CF4AC412F3143E900AD3142 /* WidgetKit.framework */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -47,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				1CF4ABFA2F3143E900AD3142 /* exploration-map */,
+				1CF4AC342F3143E900AD3142 /* ExplorationMapWidget */,
 				1CF4ABF92F3143E900AD3142 /* Products */,
 				1C73314F2F3509150011723D /* Recovered References */,
 			);
@@ -56,8 +97,18 @@
 			isa = PBXGroup;
 			children = (
 				1CF4ABF82F3143E900AD3142 /* exploration-map.app */,
+				1CF4AC332F3143E900AD3142 /* ExplorationMapWidget.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1CF4AC342F3143E900AD3142 /* ExplorationMapWidget */ = {
+			isa = PBXGroup;
+			children = (
+				1CF4AC312F3143E900AD3142 /* ExplorationMapWidget.swift */,
+				1CF4AC352F3143E900AD3142 /* ExplorationMapWidget.entitlements */,
+			);
+			path = ExplorationMapWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,10 +121,12 @@
 				1CF4ABF42F3143E900AD3142 /* Sources */,
 				1CF4ABF52F3143E900AD3142 /* Frameworks */,
 				1CF4ABF62F3143E900AD3142 /* Resources */,
+				1CF4AC362F3143E900AD3142 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1CF4AC3C2F3143E900AD3142 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1CF4ABFA2F3143E900AD3142 /* exploration-map */,
@@ -84,6 +137,23 @@
 			productName = "exploration-map";
 			productReference = 1CF4ABF82F3143E900AD3142 /* exploration-map.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1CF4AC3A2F3143E900AD3142 /* ExplorationMapWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CF4AC3B2F3143EC00AD3142 /* Build configuration list for PBXNativeTarget "ExplorationMapWidget" */;
+			buildPhases = (
+				1CF4AC392F3143E900AD3142 /* Sources */,
+				1CF4AC372F3143E900AD3142 /* Frameworks */,
+				1CF4AC382F3143E900AD3142 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExplorationMapWidget;
+			productName = ExplorationMapWidget;
+			productReference = 1CF4AC332F3143E900AD3142 /* ExplorationMapWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -96,6 +166,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					1CF4ABF72F3143E900AD3142 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					1CF4AC3A2F3143E900AD3142 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -115,12 +188,20 @@
 			projectRoot = "";
 			targets = (
 				1CF4ABF72F3143E900AD3142 /* exploration-map */,
+				1CF4AC3A2F3143E900AD3142 /* ExplorationMapWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1CF4ABF62F3143E900AD3142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CF4AC382F3143E900AD3142 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -137,7 +218,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CF4AC392F3143E900AD3142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CF4AC302F3143E900AD3142 /* ExplorationMapWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CF4AC3C2F3143E900AD3142 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CF4AC3A2F3143E900AD3142 /* ExplorationMapWidget */;
+			targetProxy = 1CF4AC3D2F3143E900AD3142 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1CF4AC172F3143EC00AD3142 /* Debug */ = {
@@ -264,11 +361,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "exploration-map/exploration-map.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BN8VYT9W96;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Exploration map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -297,11 +396,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "exploration-map/exploration-map.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BN8VYT9W96;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Exploration map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -325,6 +426,60 @@
 			};
 			name = Release;
 		};
+		1CF4AC3E2F3143EC00AD3142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ExplorationMapWidget/ExplorationMapWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BN8VYT9W96;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExplorationMapWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exploration Stats";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "www.exploration-map.ExplorationMapWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CF4AC3F2F3143EC00AD3142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ExplorationMapWidget/ExplorationMapWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BN8VYT9W96;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExplorationMapWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Exploration Stats";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "www.exploration-map.ExplorationMapWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -342,6 +497,15 @@
 			buildConfigurations = (
 				1CF4AC1A2F3143EC00AD3142 /* Debug */,
 				1CF4AC1B2F3143EC00AD3142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CF4AC3B2F3143EC00AD3142 /* Build configuration list for PBXNativeTarget "ExplorationMapWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CF4AC3E2F3143EC00AD3142 /* Debug */,
+				1CF4AC3F2F3143EC00AD3142 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

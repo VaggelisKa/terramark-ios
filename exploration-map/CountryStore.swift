@@ -70,10 +70,14 @@ final class CountryStore {
     private let defaultsKey = "CountryStatusById"
     private let wantToVisitOrderKey = "WantToVisitOrder"
 
+    /// Called after statuses or want-to-visit order are saved (e.g. to refresh goals widget).
+    var onDataChanged: (() -> Void)?
+
     init() {
         loadGeoJSON()
         loadStatuses()
         loadWantToVisitOrder()
+        writeWidgetStatsSnapshot(from: self)
     }
 
     var totalCountries: Int {
@@ -239,6 +243,8 @@ final class CountryStore {
     private func saveWantToVisitOrder() {
         guard let data = try? JSONEncoder().encode(wantToVisitOrder) else { return }
         UserDefaults.standard.set(data, forKey: wantToVisitOrderKey)
+        writeWidgetStatsSnapshot(from: self)
+        onDataChanged?()
     }
 
     private func loadStatuses() {
@@ -261,6 +267,8 @@ final class CountryStore {
     private func saveStatuses() {
         guard let data = try? JSONEncoder().encode(statuses) else { return }
         UserDefaults.standard.set(data, forKey: defaultsKey)
+        writeWidgetStatsSnapshot(from: self)
+        onDataChanged?()
     }
 
     private func bumpRevision() {
