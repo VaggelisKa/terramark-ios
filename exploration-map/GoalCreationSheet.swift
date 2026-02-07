@@ -17,9 +17,13 @@ struct GoalCreationSheet: View {
     @State private var targetDate: Date?
     @State private var customTitle: String = ""
     @State private var showingCountryPicker = false
-    @FocusState private var isGoalNameFocused: Bool
+    enum FocusableField: Hashable {
+        case goalName
+    }
+    @FocusState private var focusedField: FocusableField?
     @State private var selectedTab: GoalSheetTab = .newGoal
     @State private var showingSavedToast = false
+    @State private var keyboardDismissOverlayActive = false
 
     enum GoalSheetTab: String, CaseIterable {
         case newGoal = "New goal"
@@ -83,6 +87,16 @@ struct GoalCreationSheet: View {
             }
             .overlay(keyboardDismissOverlay)
             .overlay(savedToast)
+            .onChange(of: focusedField) { _, newValue in
+                if newValue == .goalName {
+                    Task { @MainActor in
+                        try? await Task.sleep(for: .seconds(0.3))
+                        keyboardDismissOverlayActive = true
+                    }
+                } else {
+                    keyboardDismissOverlayActive = false
+                }
+            }
             .sheet(isPresented: $showingCountryPicker) {
                 CountryGoalPickerSheet(store: store, selectedIds: $selectedCountryIds)
             }
@@ -92,6 +106,11 @@ struct GoalCreationSheet: View {
     @ViewBuilder
     private var newGoalContent: some View {
         Group {
+            Section {
+                TextField("Goal name (optional)", text: $customTitle)
+                    .focused($focusedField, equals: .goalName)
+            }
+
             Section {
                 Picker("Goal type", selection: $goalType) {
                     ForEach(GoalType.allCases, id: \.self) { type in
@@ -153,19 +172,14 @@ struct GoalCreationSheet: View {
                     }
                 }
 
-                Section("By date (optional)") {
-                    Toggle("Set target date", isOn: Binding(
-                        get: { targetDate != nil },
-                        set: { if $0 { targetDate = targetDate ?? defaultTargetDate() } else { targetDate = nil } }
-                    ))
-                    if targetDate != nil {
-                        DatePicker("By", selection: Binding(get: { targetDate ?? defaultTargetDate() }, set: { targetDate = $0 }), in: Date()..., displayedComponents: .date)
-                    }
+            Section("By date (optional)") {
+                Toggle("Set target date", isOn: Binding(
+                    get: { targetDate != nil },
+                    set: { if $0 { targetDate = targetDate ?? defaultTargetDate() } else { targetDate = nil } }
+                ))
+                if targetDate != nil {
+                    DatePicker("By", selection: Binding(get: { targetDate ?? defaultTargetDate() }, set: { targetDate = $0 }), in: Date()..., displayedComponents: .date)
                 }
-
-            Section {
-                TextField("Goal name (optional)", text: $customTitle)
-                    .focused($isGoalNameFocused)
             }
         }
     }
@@ -210,9 +224,9 @@ struct GoalCreationSheet: View {
     private var keyboardDismissOverlay: some View {
         Color.clear
             .contentShape(Rectangle())
-            .onTapGesture { isGoalNameFocused = false }
+            .onTapGesture { focusedField = nil }
             .ignoresSafeArea()
-            .allowsHitTesting(isGoalNameFocused)
+            .allowsHitTesting(keyboardDismissOverlayActive)
     }
 
     @ViewBuilder
@@ -299,8 +313,9 @@ struct GoalCreationSheet: View {
         selectedCountryIds = []
         targetDate = nil
         customTitle = ""
-        isGoalNameFocused = false
+        focusedField = nil
     }
+
 }
 
 // MARK: - Country picker for specific-countries goal
