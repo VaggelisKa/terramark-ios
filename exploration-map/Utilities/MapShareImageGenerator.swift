@@ -1,4 +1,5 @@
 import MapKit
+import SwiftUI
 import UIKit
 
 enum MapShareImageGenerator {
@@ -12,7 +13,7 @@ enum MapShareImageGenerator {
     private static let statsBarHeight: CGFloat = 160
 
     @MainActor
-    static func generate(store: CountryStore) async -> UIImage? {
+    static func generate(store: CountryStore, colorScheme: ColorScheme = .light) async -> UIImage? {
         let options = MKMapSnapshotter.Options()
         options.region = worldRegion
         options.size = imageSize
@@ -28,7 +29,7 @@ enum MapShareImageGenerator {
                         continuation.resume(returning: nil)
                         return
                     }
-                    let image = drawShareImage(snapshot: snapshot, store: store)
+                    let image = drawShareImage(snapshot: snapshot, store: store, colorScheme: colorScheme)
                     continuation.resume(returning: image)
                 }
             }
@@ -36,8 +37,8 @@ enum MapShareImageGenerator {
     }
 
     @MainActor
-    static func generatePDF(store: CountryStore) async -> URL? {
-        guard let image = await generate(store: store) else { return nil }
+    static func generatePDF(store: CountryStore, colorScheme: ColorScheme = .light) async -> URL? {
+        guard let image = await generate(store: store, colorScheme: colorScheme) else { return nil }
         let size = image.size
         let bounds = CGRect(origin: .zero, size: size)
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("ExplorationMap-\(UUID().uuidString).pdf")
@@ -54,7 +55,7 @@ enum MapShareImageGenerator {
     }
 
     @MainActor
-    private static func drawShareImage(snapshot: MKMapSnapshotter.Snapshot, store: CountryStore) -> UIImage? {
+    private static func drawShareImage(snapshot: MKMapSnapshotter.Snapshot, store: CountryStore, colorScheme: ColorScheme) -> UIImage? {
         let snapshotSize = snapshot.image.size
         let size = (snapshotSize.width > 0 && snapshotSize.height > 0)
             ? snapshotSize
@@ -70,7 +71,7 @@ enum MapShareImageGenerator {
                     guard let polygon = overlay as? MKPolygon else { continue }
                     let countryId = polygon.title ?? ""
                     let status = store.status(for: countryId)
-                    drawPolygon(polygon, on: snapshot, in: context.cgContext, fillColor: store.fillColor(for: status), strokeColor: store.strokeColor(for: status))
+                    drawPolygon(polygon, on: snapshot, in: context.cgContext, fillColor: store.fillColor(for: status, colorScheme: colorScheme), strokeColor: store.strokeColor(for: status, colorScheme: colorScheme))
                 }
             } else {
                 UIColor.systemGray.withAlphaComponent(0.25).setFill()

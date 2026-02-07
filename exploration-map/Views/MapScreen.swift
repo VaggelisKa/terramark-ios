@@ -4,6 +4,7 @@ struct MapScreen: View {
     var store: CountryStore
     var goalStore: GoalStore
     var settingsStore: SettingsStore
+    @Environment(\.colorScheme) private var colorScheme
     @State private var selectedCountry: CountrySelection?
     @State private var showingWantToVisitList = false
     @State private var showingGoalCreation = false
@@ -14,7 +15,7 @@ struct MapScreen: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            CountryMapView(store: store, selectedCountry: $selectedCountry)
+            CountryMapView(store: store, selectedCountry: $selectedCountry, colorScheme: colorScheme)
                 .ignoresSafeArea()
 
             VStack(spacing: 12) {
@@ -147,7 +148,7 @@ struct MapScreen: View {
     private func shareAsScreenshot() {
         isGeneratingShare = true
         Task { @MainActor in
-            let image = await MapShareImageGenerator.generate(store: store)
+            let image = await MapShareImageGenerator.generate(store: store, colorScheme: colorScheme)
             isGeneratingShare = false
             if let image {
                 SharePresenter.present(activityItems: [image]) { }
@@ -158,7 +159,7 @@ struct MapScreen: View {
     private func shareAsPDF() {
         isGeneratingShare = true
         Task { @MainActor in
-            let pdfURL = await MapShareImageGenerator.generatePDF(store: store)
+            let pdfURL = await MapShareImageGenerator.generatePDF(store: store, colorScheme: colorScheme)
             isGeneratingShare = false
             if let pdfURL {
                 SharePresenter.present(activityItems: [pdfURL]) {

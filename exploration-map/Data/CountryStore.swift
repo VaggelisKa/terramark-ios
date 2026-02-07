@@ -161,25 +161,36 @@ final class CountryStore {
         bumpRevision()
     }
 
-    func fillColor(for status: CountryStatus) -> UIColor {
+    /// Blue used for visited countries in light mode (deeper for better contrast)
+    private static let lightModeBlue = UIColor(red: 0.1, green: 0.35, blue: 0.85, alpha: 1)
+    /// Orange used for want-to-visit countries in light mode (deeper for better contrast)
+    private static let lightModeOrange = UIColor(red: 0.9, green: 0.4, blue: 0.05, alpha: 1)
+
+    func fillColor(for status: CountryStatus, colorScheme: ColorScheme? = nil) -> UIColor {
+        let useLightModeColors = colorScheme == .light
         switch status {
         case .none:
             return UIColor.systemGray.withAlphaComponent(0.08)
         case .visited:
-            return UIColor.systemBlue.withAlphaComponent(0.45)
+            let base = useLightModeColors ? Self.lightModeBlue : UIColor.systemBlue
+            return base.withAlphaComponent(0.45)
         case .wantToVisit:
-            return UIColor.systemOrange.withAlphaComponent(0.45)
+            let base = useLightModeColors ? Self.lightModeOrange : UIColor.systemOrange
+            return base.withAlphaComponent(0.45)
         }
     }
 
-    func strokeColor(for status: CountryStatus) -> UIColor {
+    func strokeColor(for status: CountryStatus, colorScheme: ColorScheme? = nil) -> UIColor {
+        let useLightModeColors = colorScheme == .light
         switch status {
         case .none:
             return UIColor.systemGray.withAlphaComponent(0.35)
         case .visited:
-            return UIColor.systemBlue.withAlphaComponent(0.9)
+            let base = useLightModeColors ? Self.lightModeBlue : UIColor.systemBlue
+            return base.withAlphaComponent(0.9)
         case .wantToVisit:
-            return UIColor.systemOrange.withAlphaComponent(0.9)
+            let base = useLightModeColors ? Self.lightModeOrange : UIColor.systemOrange
+            return base.withAlphaComponent(0.9)
         }
     }
 

@@ -4,6 +4,7 @@ import SwiftUI
 struct CountryMapView: UIViewRepresentable {
     var store: CountryStore
     @Binding var selectedCountry: CountrySelection?
+    var colorScheme: ColorScheme = .light
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
@@ -28,10 +29,16 @@ struct CountryMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        if context.coordinator.lastRevision != store.revision {
+        let coordinator = context.coordinator
+        coordinator.parent = self
+
+        let revisionChanged = coordinator.lastRevision != store.revision
+        let colorSchemeChanged = coordinator.lastColorScheme != colorScheme
+        if revisionChanged || colorSchemeChanged {
             uiView.removeOverlays(uiView.overlays)
             uiView.addOverlays(store.overlays)
-            context.coordinator.lastRevision = store.revision
+            coordinator.lastRevision = store.revision
+            coordinator.lastColorScheme = colorScheme
         }
     }
 
@@ -42,9 +49,11 @@ struct CountryMapView: UIViewRepresentable {
     final class Coordinator: NSObject, MKMapViewDelegate {
         var parent: CountryMapView
         var lastRevision: Int = -1
+        var lastColorScheme: ColorScheme = .light
 
         init(parent: CountryMapView) {
             self.parent = parent
+            self.lastColorScheme = parent.colorScheme
         }
 
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -53,8 +62,8 @@ struct CountryMapView: UIViewRepresentable {
             }
             let status = parent.store.status(for: polygon.title ?? "")
             let renderer = MKPolygonRenderer(polygon: polygon)
-            renderer.fillColor = parent.store.fillColor(for: status)
-            renderer.strokeColor = parent.store.strokeColor(for: status)
+            renderer.fillColor = parent.store.fillColor(for: status, colorScheme: parent.colorScheme)
+            renderer.strokeColor = parent.store.strokeColor(for: status, colorScheme: parent.colorScheme)
             renderer.lineWidth = 1.0
             return renderer
         }
