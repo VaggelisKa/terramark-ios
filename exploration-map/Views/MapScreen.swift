@@ -117,7 +117,7 @@ struct MapScreen: View {
             }
             .animation(.easeInOut(duration: 0.25), value: isStatsExpanded)
             .padding(.horizontal)
-            .padding(.bottom, 16)
+            .padding(.bottom, 32)
         }
         .confirmationDialog("Share map", isPresented: $showingShareFormatDialog, titleVisibility: .visible) {
             Button("Screenshot") { shareAsScreenshot() }
