@@ -47,7 +47,7 @@ struct SplashView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
                     .shadow(color: iconShadowColor, radius: 20, x: 0, y: 8)
 
-                Text("Exploration Map")
+                Text("Terramark")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(titleColor)

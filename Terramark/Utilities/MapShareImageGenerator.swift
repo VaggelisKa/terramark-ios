@@ -41,7 +41,7 @@ enum MapShareImageGenerator {
         guard let image = await generate(store: store, colorScheme: colorScheme) else { return nil }
         let size = image.size
         let bounds = CGRect(origin: .zero, size: size)
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("ExplorationMap-\(UUID().uuidString).pdf")
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("Terramark-\(UUID().uuidString).pdf")
         let renderer = UIGraphicsPDFRenderer(bounds: bounds)
         do {
             try renderer.writePDF(to: tempURL) { context in
@@ -139,7 +139,7 @@ enum MapShareImageGenerator {
             .foregroundColor: UIColor.white,
             .paragraphStyle: center
         ]
-        let title = "Exploration map"
+        let title = "Terramark"
         let titleSize = (title as NSString).size(withAttributes: titleAttrs)
 
         let mainFont = UIFont.systemFont(ofSize: 18, weight: .medium)

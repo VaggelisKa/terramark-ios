@@ -61,7 +61,7 @@ struct Goal: Identifiable, Codable, Equatable {
     }
 }
 
-private let goalsDefaultsKey = "ExplorationMapGoals"
+private let goalsDefaultsKey = "TerramarkGoals"
 
 @Observable
 @MainActor

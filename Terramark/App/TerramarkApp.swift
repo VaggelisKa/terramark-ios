@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct exploration_mapApp: App {
+struct TerramarkApp: App {
     @State private var store = CountryStore()
     @State private var goalStore = GoalStore()
     @State private var settingsStore = SettingsStore()

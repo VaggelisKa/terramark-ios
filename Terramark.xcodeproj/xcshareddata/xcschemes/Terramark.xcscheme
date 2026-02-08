@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1CF4ABF72F3143E900AD3142"
-               BuildableName = "exploration-map.app"
-               BlueprintName = "exploration-map"
-               ReferencedContainer = "container:exploration-map.xcodeproj">
+               BuildableName = "Terramark.app"
+               BlueprintName = "Terramark"
+               ReferencedContainer = "container:Terramark.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CF4ABF72F3143E900AD3142"
-            BuildableName = "exploration-map.app"
-            BlueprintName = "exploration-map"
-            ReferencedContainer = "container:exploration-map.xcodeproj">
+            BuildableName = "Terramark.app"
+            BlueprintName = "Terramark"
+            ReferencedContainer = "container:Terramark.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1CF4ABF72F3143E900AD3142"
-            BuildableName = "exploration-map.app"
-            BlueprintName = "exploration-map"
-            ReferencedContainer = "container:exploration-map.xcodeproj">
+            BuildableName = "Terramark.app"
+            BlueprintName = "Terramark"
+            ReferencedContainer = "container:Terramark.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

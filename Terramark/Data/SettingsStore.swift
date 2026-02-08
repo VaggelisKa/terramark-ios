@@ -34,7 +34,7 @@ enum AppTheme: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-private let themeDefaultsKey = "ExplorationMapTheme"
+private let themeDefaultsKey = "TerramarkTheme"
 
 @Observable
 @MainActor

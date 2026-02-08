@@ -2,7 +2,7 @@ import Foundation
 import WidgetKit
 
 let widgetGoalsSnapshotKey = "WidgetGoalsSnapshot"
-let explorationMapGoalsWidgetKind = "ExplorationMapGoalsWidget"
+let terramarkGoalsWidgetKind = "TerramarkGoalsWidget"
 
 struct WidgetGoalEntry: Codable {
     var label: String
@@ -44,6 +44,6 @@ func writeWidgetGoalsSnapshot(countryStore: CountryStore, goalStore: GoalStore) 
     UserDefaults(suiteName: widgetStatsAppGroupSuiteName)?.set(data, forKey: widgetGoalsSnapshotKey)
 
     #if canImport(WidgetKit)
-    WidgetCenter.shared.reloadTimelines(ofKind: explorationMapGoalsWidgetKind)
+    WidgetCenter.shared.reloadTimelines(ofKind: terramarkGoalsWidgetKind)
     #endif
 }

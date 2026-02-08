@@ -8,10 +8,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Exploration Map</string>
+			<string>Terramark</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>exploration-map</string>
+				<string>terramark</string>
 			</array>
 		</dict>
 	</array>

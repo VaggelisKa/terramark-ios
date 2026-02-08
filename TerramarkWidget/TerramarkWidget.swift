@@ -3,7 +3,7 @@ import WidgetKit
 
 // MARK: - Snapshot (must match main app’s WidgetStatsSnapshot encoding)
 
-private let appGroupSuiteName = "group.www.exploration-map"
+private let appGroupSuiteName = "group.www.terramark"
 private let snapshotKey = "WidgetStatsSnapshot"
 
 struct WidgetStatsSnapshot: Codable {
@@ -114,7 +114,7 @@ struct StatsWidgetSmallView: View {
     var body: some View {
         let s = entry.snapshot
         VStack(alignment: .leading, spacing: 4) {
-            Text("Exploration map")
+            Text("Terramark")
                 .font(.caption)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
@@ -199,8 +199,8 @@ private struct StatRowView: View {
 
 // MARK: - Widget
 
-struct ExplorationMapStatsWidget: Widget {
-    let kind: String = "ExplorationMapStatsWidget"
+struct TerramarkStatsWidget: Widget {
+    let kind: String = "TerramarkStatsWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: StatsProvider()) { entry in
@@ -213,7 +213,7 @@ struct ExplorationMapStatsWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("Exploration Stats")
+        .configurationDisplayName("Terramark Stats")
         .description("Your visited countries and world percentage.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
@@ -234,7 +234,7 @@ struct StatsWidgetView: View {
                 StatsWidgetSmallView(entry: entry)
             }
         }
-        .widgetURL(URL(string: "exploration-map://"))
+        .widgetURL(URL(string: "terramark://"))
     }
 }
 
@@ -332,12 +332,12 @@ struct GoalsWidgetView: View {
                 GoalsWidgetSmallView(entry: entry)
             }
         }
-        .widgetURL(URL(string: "exploration-map://"))
+        .widgetURL(URL(string: "terramark://"))
     }
 }
 
-struct ExplorationMapGoalsWidget: Widget {
-    let kind: String = "ExplorationMapGoalsWidget"
+struct TerramarkGoalsWidget: Widget {
+    let kind: String = "TerramarkGoalsWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: GoalsProvider()) { entry in
@@ -359,9 +359,9 @@ struct ExplorationMapGoalsWidget: Widget {
 // MARK: - Bundle
 
 @main
-struct ExplorationMapWidgetBundle: WidgetBundle {
+struct TerramarkWidgetBundle: WidgetBundle {
     var body: some Widget {
-        ExplorationMapStatsWidget()
-        ExplorationMapGoalsWidget()
+        TerramarkStatsWidget()
+        TerramarkGoalsWidget()
     }
 }

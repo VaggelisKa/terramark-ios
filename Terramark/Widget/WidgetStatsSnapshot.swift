@@ -1,9 +1,9 @@
 import Foundation
 import WidgetKit
 
-let widgetStatsAppGroupSuiteName = "group.www.exploration-map"
+let widgetStatsAppGroupSuiteName = "group.www.terramark"
 let widgetStatsSnapshotKey = "WidgetStatsSnapshot"
-let explorationMapWidgetKind = "ExplorationMapStatsWidget"
+let terramarkStatsWidgetKind = "TerramarkStatsWidget"
 
 struct WidgetStatsSnapshot: Codable {
     var totalCountries: Int
@@ -42,6 +42,6 @@ func writeWidgetStatsSnapshot(from store: CountryStore) {
     UserDefaults(suiteName: widgetStatsAppGroupSuiteName)?.set(data, forKey: widgetStatsSnapshotKey)
 
     #if canImport(WidgetKit)
-    WidgetCenter.shared.reloadTimelines(ofKind: explorationMapWidgetKind)
+    WidgetCenter.shared.reloadTimelines(ofKind: terramarkStatsWidgetKind)
     #endif
 }
