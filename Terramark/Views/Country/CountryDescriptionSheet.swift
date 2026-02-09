@@ -4,72 +4,254 @@ struct CountryDescriptionSheet: View {
     let selection: CountrySelection
     var store: CountryStore
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedDetent: PresentationDetent = .large
     @State private var aiInsights: TravelInsights?
     @State private var isLoadingInsights = false
     @State private var insightsError: String?
 
+    private var currentStatus: CountryStatus {
+        store.status(for: selection.id)
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    headerSection
+                VStack(spacing: 0) {
+                    heroSection
 
-                    if TravelInsightsService.isAvailable {
-                        travelInsightsSection
+                    VStack(spacing: 20) {
+                        if TravelInsightsService.isAvailable {
+                            travelInsightsSection
+                        }
+
+                        if let desc = CountryDescriptionsLoader.description(for: selection.id) {
+                            aboutSection(desc)
+                        } else {
+                            placeholderAboutSection
+                        }
                     }
-
-                    if let desc = CountryDescriptionsLoader.description(for: selection.id) {
-                        descriptionSection(title: "Overview", text: desc.overview)
-                        descriptionSection(title: "Known for", text: desc.knownFor)
-                        descriptionSection(title: "Quick history", text: desc.quickHistory)
-                    } else {
-                        descriptionSection(
-                            title: "Overview",
-                            text: "A short overview of this destination will appear here. You'll find key facts, geography, and a brief introduction to the country."
-                        )
-                        descriptionSection(
-                            title: "Known for",
-                            text: "Highlights and what this place is known for will be shown here."
-                        )
-                        descriptionSection(
-                            title: "Quick history",
-                            text: "A brief history will be available in a future update."
-                        )
-                    }
-
-                    Spacer(minLength: 32)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+                    .padding(.bottom, 40)
                 }
-                .padding(20)
             }
             .scrollContentBackground(.hidden)
             .background(Color(uiColor: .systemGroupedBackground))
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack(spacing: 8) {
-                        Text(store.flagEmoji(for: selection.id))
-                            .font(.title2)
-                        Text(selection.name)
-                            .font(.headline)
-                    }
-                }
                 ToolbarItem(placement: .primaryAction) {
-                    Button { dismiss() } label: {
+                    Button {
+                        dismiss()
+                    } label: {
                         Image(systemName: "xmark")
                     }
                 }
             }
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarBackground(.regularMaterial, for: .navigationBar)
+            .toolbarBackground(.hidden, for: .navigationBar)
         }
-        .presentationDetents([.medium, .large], selection: $selectedDetent)
         .presentationDragIndicator(.visible)
         .onAppear {
             if TravelInsightsService.isAvailable {
                 Task { await loadInsights() }
             }
+        }
+    }
+
+    // MARK: - Hero
+
+    private var heroSection: some View {
+        VStack(spacing: 10) {
+            Text(store.flagEmoji(for: selection.id))
+                .font(.system(size: 64))
+
+            Text(selection.name)
+                .font(.title.weight(.bold))
+                .multilineTextAlignment(.center)
+
+            HStack(spacing: 8) {
+                if let continent = store.countryContinents[selection.id], !continent.isEmpty {
+                    Label(continent, systemImage: "globe")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.secondary)
+                }
+
+                if currentStatus != .none {
+                    Text("\u{00B7}")
+                        .font(.subheadline)
+                        .foregroundStyle(.quaternary)
+
+                    HStack(spacing: 4) {
+                        Image(systemName: currentStatus == .visited ? "checkmark.circle.fill" : "heart.fill")
+                            .font(.caption)
+                        Text(currentStatus.title)
+                            .font(.subheadline.weight(.medium))
+                    }
+                    .foregroundStyle(currentStatus.color)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 24)
+        .padding(.horizontal, 20)
+    }
+
+    // MARK: - About
+
+    private func aboutSection(_ desc: CountryDescription) -> some View {
+        VStack(spacing: 12) {
+            sectionHeader("About", systemImage: "book.fill")
+
+            VStack(alignment: .leading, spacing: 0) {
+                infoBlock(title: "Overview", text: desc.overview, icon: "doc.text.fill")
+
+                sectionDivider
+
+                infoBlock(title: "Known for", text: desc.knownFor, icon: "star.fill")
+
+                sectionDivider
+
+                infoBlock(title: "Quick history", text: desc.quickHistory, icon: "clock.fill")
+            }
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+    }
+
+    private var placeholderAboutSection: some View {
+        VStack(spacing: 12) {
+            sectionHeader("About", systemImage: "book.fill")
+
+            VStack(alignment: .leading, spacing: 0) {
+                infoBlock(
+                    title: "Overview",
+                    text: "A short overview of this destination will appear here. You'll find key facts, geography, and a brief introduction to the country.",
+                    icon: "doc.text.fill"
+                )
+
+                sectionDivider
+
+                infoBlock(
+                    title: "Known for",
+                    text: "Highlights and what this place is known for will be shown here.",
+                    icon: "star.fill"
+                )
+
+                sectionDivider
+
+                infoBlock(
+                    title: "Quick history",
+                    text: "A brief history will be available in a future update.",
+                    icon: "clock.fill"
+                )
+            }
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+    }
+
+    private var sectionDivider: some View {
+        Divider()
+            .padding(.horizontal, 16)
+    }
+
+    private func infoBlock(title: String, text: String, icon: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tint)
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+            }
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+    }
+
+    // MARK: - Travel Insights
+
+    @ViewBuilder
+    private var travelInsightsSection: some View {
+        VStack(spacing: 12) {
+            sectionHeader("Travel insights", systemImage: "sparkles")
+
+            if isLoadingInsights {
+                loadingCard
+            } else if let error = insightsError {
+                errorCard(error)
+            } else if let insights = aiInsights {
+                insightsGrid(insights)
+            }
+        }
+    }
+
+    private var loadingCard: some View {
+        HStack(spacing: 10) {
+            ProgressView()
+            Text("Getting travel tips\u{2026}")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private func errorCard(_ message: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            Button("Try again") {
+                Task { await loadInsights() }
+            }
+            .font(.subheadline.weight(.medium))
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private func insightsGrid(_ insights: TravelInsights) -> some View {
+        VStack(spacing: 10) {
+            InsightRow(
+                title: "Best time to visit",
+                systemImage: "sun.and.horizon.fill",
+                text: insights.bestTimeToVisit,
+                tint: .orange
+            )
+            InsightRow(
+                title: "Getting there",
+                systemImage: "airplane.departure",
+                text: insights.gettingThere,
+                tint: .blue
+            )
+            InsightRow(
+                title: "What to know",
+                systemImage: "lightbulb.fill",
+                text: insights.whatToKnow,
+                tint: .purple
+            )
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func sectionHeader(_ title: String, systemImage: String) -> some View {
+        HStack(spacing: 6) {
+            Image(systemName: systemImage)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+            Spacer()
         }
     }
 
@@ -91,126 +273,39 @@ struct CountryDescriptionSheet: View {
             insightsError = error.localizedDescription
         }
     }
-
-    @ViewBuilder
-    private var travelInsightsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 6) {
-                Image(systemName: "sparkles")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                Text("Travel insights")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
-
-            if isLoadingInsights {
-                HStack(spacing: 10) {
-                    ProgressView()
-                    Text("Getting travel tips…")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(16)
-                .background(Color(uiColor: .secondarySystemGroupedBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            } else if let error = insightsError {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(error)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    Button("Try again") {
-                        Task { await loadInsights() }
-                    }
-                    .font(.subheadline.weight(.medium))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(16)
-                .background(Color(uiColor: .secondarySystemGroupedBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            } else if let insights = aiInsights {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        InsightCard(
-                            title: "Best time to visit",
-                            systemImage: "calendar.badge.clock",
-                            text: insights.bestTimeToVisit
-                        )
-                        InsightCard(
-                            title: "Getting there",
-                            systemImage: "airplane",
-                            text: insights.gettingThere
-                        )
-                        InsightCard(
-                            title: "What to know",
-                            systemImage: "newspaper",
-                            text: insights.whatToKnow
-                        )
-                    }
-                    .padding(.vertical, 4)
-                }
-            }
-        }
-    }
-
-    private var headerSection: some View {
-        HStack(spacing: 12) {
-            Text(store.flagEmoji(for: selection.id))
-                .font(.system(size: 48))
-            VStack(alignment: .leading, spacing: 4) {
-                Text(selection.name)
-                    .font(.title2.weight(.semibold))
-                if let continent = store.countryContinents[selection.id], !continent.isEmpty {
-                    Text(continent)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            Spacer()
-        }
-        .padding(16)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-    }
-
-    private func descriptionSection(title: String, text: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.secondary)
-            Text(text)
-                .font(.body)
-                .foregroundStyle(.primary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-    }
 }
 
-private struct InsightCard: View {
+// MARK: - Insight Row
+
+private struct InsightRow: View {
     let title: String
     let systemImage: String
     let text: String
+    var tint: Color = .accentColor
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 6) {
-                Image(systemName: systemImage)
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.secondary)
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(tint)
+                .frame(width: 32, height: 32)
+                .background(tint.opacity(0.12))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.primary)
+                Text(text)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-            Text(text)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
         }
-        .frame(width: 260, alignment: .topLeading)
-        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding(14)
         .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
