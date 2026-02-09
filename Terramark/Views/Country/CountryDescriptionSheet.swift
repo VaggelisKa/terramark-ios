@@ -180,7 +180,7 @@ struct CountryDescriptionSheet: View {
             sectionHeader("Travel insights", systemImage: "sparkles")
 
             if isLoadingInsights {
-                loadingCard
+                skeletonInsightsGrid
             } else if let error = insightsError {
                 errorCard(error)
             } else if let insights = aiInsights {
@@ -189,17 +189,12 @@ struct CountryDescriptionSheet: View {
         }
     }
 
-    private var loadingCard: some View {
-        HStack(spacing: 10) {
-            ProgressView()
-            Text("Getting travel tips\u{2026}")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+    private var skeletonInsightsGrid: some View {
+        VStack(spacing: 10) {
+            SkeletonInsightRow(tint: .orange)
+            SkeletonInsightRow(tint: .blue)
+            SkeletonInsightRow(tint: .purple)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     private func errorCard(_ message: String) -> some View {
@@ -306,6 +301,45 @@ private struct InsightRow: View {
         .padding(14)
         .background(Color(uiColor: .secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+}
+
+// MARK: - Skeleton Insight Row
+
+private struct SkeletonInsightRow: View {
+    var tint: Color = .gray
+    @State private var isAnimating = false
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .fill(skeletonFill)
+                .frame(width: 32, height: 32)
+
+            VStack(alignment: .leading, spacing: 6) {
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(skeletonFill)
+                    .frame(width: 120, height: 12)
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(skeletonFill)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 10)
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(skeletonFill)
+                    .frame(width: 220, height: 10)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding(14)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .opacity(isAnimating ? 0.7 : 0.4)
+        .animation(.easeInOut(duration: 0.9).repeatForever(autoreverses: true), value: isAnimating)
+        .onAppear { isAnimating = true }
+    }
+
+    private var skeletonFill: Color {
+        Color(uiColor: .tertiaryLabel)
     }
 }
 
