@@ -44,12 +44,18 @@ struct CountryStatusSheet: View {
             .navigationTitle([store.flagEmoji(for: selection.id), selection.name].filter { !$0.isEmpty }.joined(separator: " "))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button {
-                        store.updateStatus(pendingStatus, for: selection.id)
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
+                    }
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button ("Save") {
+                        store.updateStatus(pendingStatus, for: selection.id)
+                        dismiss()
                     }
                 }
             }
@@ -59,4 +65,11 @@ struct CountryStatusSheet: View {
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
     }
+}
+
+#Preview {
+    CountryStatusSheet(
+        selection: CountrySelection(id: "USA", name: "United States"),
+        store: CountryStore()
+    )
 }
