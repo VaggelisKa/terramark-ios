@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WantToVisitListView: View {
     var store: CountryStore
+    var settingsStore: SettingsStore
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
     @State private var selectedCountry: CountrySelection?
@@ -70,7 +71,7 @@ struct WantToVisitListView: View {
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
         .sheet(item: $selectedCountry) { selection in
-            CountryDescriptionSheet(selection: selection, store: store)
+            CountryDescriptionSheet(selection: selection, store: store, settingsStore: settingsStore)
         }
     }
 }

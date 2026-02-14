@@ -3,6 +3,7 @@ import SwiftUI
 
 struct CountryMapView: UIViewRepresentable {
     var store: CountryStore
+    var settingsStore: SettingsStore
     @Binding var selectedCountry: CountrySelection?
     var colorScheme: ColorScheme = .light
 

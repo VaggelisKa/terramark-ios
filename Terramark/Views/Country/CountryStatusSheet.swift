@@ -3,12 +3,14 @@ import SwiftUI
 struct CountryStatusSheet: View {
     let selection: CountrySelection
     var store: CountryStore
+    var settingsStore: SettingsStore
     @Environment(\.dismiss) private var dismiss
     @State private var pendingStatus: CountryStatus
 
-    init(selection: CountrySelection, store: CountryStore) {
+    init(selection: CountrySelection, store: CountryStore, settingsStore: SettingsStore) {
         self.selection = selection
         self.store = store
+        self.settingsStore = settingsStore
         _pendingStatus = State(initialValue: store.status(for: selection.id))
     }
 
@@ -19,7 +21,10 @@ struct CountryStatusSheet: View {
                     Button {
                         pendingStatus = status
                     } label: {
-                        HStack {
+                        HStack(spacing: 12) {
+                            Circle()
+                                .fill(settingsStore.color(for: status))
+                                .frame(width: 10, height: 10)
                             Text(status.title)
                                 .foregroundStyle(.primary)
                             Spacer()
@@ -70,6 +75,7 @@ struct CountryStatusSheet: View {
 #Preview {
     CountryStatusSheet(
         selection: CountrySelection(id: "USA", name: "United States"),
-        store: CountryStore()
+        store: CountryStore(),
+        settingsStore: SettingsStore()
     )
 }

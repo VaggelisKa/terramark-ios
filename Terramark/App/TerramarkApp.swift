@@ -2,9 +2,15 @@ import SwiftUI
 
 @main
 struct TerramarkApp: App {
-    @State private var store = CountryStore()
-    @State private var goalStore = GoalStore()
     @State private var settingsStore = SettingsStore()
+    @State private var store: CountryStore
+    @State private var goalStore = GoalStore()
+
+    init() {
+        let settings = SettingsStore()
+        _settingsStore = State(initialValue: settings)
+        _store = State(initialValue: CountryStore(settingsStore: settings))
+    }
     @State private var showSplash = true
 
     var body: some Scene {

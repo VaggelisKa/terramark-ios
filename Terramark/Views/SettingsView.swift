@@ -16,6 +16,14 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.inline)
                 }
+
+                Section("Map colors") {
+                    ColorPicker("Visited or lived", selection: $settingsStore.visitedColor, supportsOpacity: false)
+                    ColorPicker("Want to visit", selection: $settingsStore.wantToVisitColor, supportsOpacity: false)
+                    Button("Reset to defaults", systemImage: "arrow.counterclockwise") {
+                        settingsStore.resetMapColorsToDefaults()
+                    }
+                }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)

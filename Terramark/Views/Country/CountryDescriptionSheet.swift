@@ -3,6 +3,7 @@ import SwiftUI
 struct CountryDescriptionSheet: View {
     let selection: CountrySelection
     var store: CountryStore
+    var settingsStore: SettingsStore
     @Environment(\.dismiss) private var dismiss
     @State private var aiInsights: TravelInsights?
     @State private var isLoadingInsights = false
@@ -86,7 +87,7 @@ struct CountryDescriptionSheet: View {
                         Text(currentStatus.title)
                             .font(.subheadline.weight(.medium))
                     }
-                    .foregroundStyle(currentStatus.color)
+                    .foregroundStyle(settingsStore.color(for: currentStatus))
                 }
             }
         }
@@ -346,6 +347,7 @@ private struct SkeletonInsightRow: View {
 #Preview {
     CountryDescriptionSheet(
         selection: CountrySelection(id: "USA", name: "United States"),
-        store: CountryStore()
+        store: CountryStore(),
+        settingsStore: SettingsStore()
     )
 }

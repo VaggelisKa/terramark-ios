@@ -15,7 +15,7 @@ struct MapScreen: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            CountryMapView(store: store, selectedCountry: $selectedCountry, colorScheme: colorScheme)
+            CountryMapView(store: store, settingsStore: settingsStore, selectedCountry: $selectedCountry, colorScheme: colorScheme)
                 .ignoresSafeArea()
 
             VStack(spacing: 12) {
@@ -127,10 +127,10 @@ struct MapScreen: View {
             Text("Choose format to share")
         }
         .sheet(item: $selectedCountry) { selection in
-            CountryStatusSheet(selection: selection, store: store)
+            CountryStatusSheet(selection: selection, store: store, settingsStore: settingsStore)
         }
         .sheet(isPresented: $showingWantToVisitList) {
-            WantToVisitListView(store: store)
+            WantToVisitListView(store: store, settingsStore: settingsStore)
         }
         .sheet(isPresented: $showingGoalCreation) {
             GoalCreationSheet(store: store, goalStore: goalStore)
@@ -139,6 +139,9 @@ struct MapScreen: View {
             SettingsView(settingsStore: settingsStore)
         }
         .environment(store)
+        .onChange(of: settingsStore.colorSettingsRevision) { _, _ in
+            store.invalidateOverlays()
+        }
         .onAppear {
             store.onDataChanged = { writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore) }
             writeWidgetGoalsSnapshot(countryStore: store, goalStore: goalStore)
