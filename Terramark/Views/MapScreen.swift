@@ -12,6 +12,7 @@ struct MapScreen: View {
     @State private var showingShareFormatDialog = false
     @State private var isGeneratingShare = false
     @State private var showingSettings = false
+    @State private var showingCountrySearch = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -118,6 +119,29 @@ struct MapScreen: View {
             .animation(.easeInOut(duration: 0.25), value: isStatsExpanded)
             .padding(.horizontal)
             .padding(.bottom, 32)
+
+            if settingsStore.showSearchButton {
+                VStack {
+                    HStack {
+                        Spacer()
+                        GlassEffectContainer {
+                            Button {
+                                showingCountrySearch = true
+                            } label: {
+                                Image(systemName: "magnifyingglass")
+                                    .font(.body.weight(.medium))
+                                    .frame(width: 44, height: 44)
+                                    .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .glassEffect(.clear, in: Circle())
+                        }
+                        .padding(.trailing, 16)
+                        .padding(.top, 8)
+                    }
+                    Spacer()
+                }
+            }
         }
         .confirmationDialog("Share map", isPresented: $showingShareFormatDialog, titleVisibility: .visible) {
             Button("Screenshot") { shareAsScreenshot() }
@@ -137,6 +161,9 @@ struct MapScreen: View {
         }
         .sheet(isPresented: $showingSettings) {
             SettingsView(settingsStore: settingsStore)
+        }
+        .sheet(isPresented: $showingCountrySearch) {
+            CountrySearchSheet(store: store, settingsStore: settingsStore)
         }
         .environment(store)
         .onChange(of: settingsStore.colorSettingsRevision) { _, _ in

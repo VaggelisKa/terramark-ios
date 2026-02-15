@@ -63,6 +63,7 @@ enum AppTheme: String, Codable, CaseIterable, Identifiable {
 private let themeDefaultsKey = "TerramarkTheme"
 private let visitedColorKey = "TerramarkVisitedColor"
 private let wantToVisitColorKey = "TerramarkWantToVisitColor"
+private let showSearchButtonKey = "TerramarkShowSearchButton"
 
 @Observable
 @MainActor
@@ -83,6 +84,10 @@ final class SettingsStore {
             saveWantToVisitColor()
             colorSettingsRevision += 1
         }
+    }
+
+    var showSearchButton: Bool {
+        didSet { saveShowSearchButton() }
     }
 
     private(set) var colorSettingsRevision: Int = 0
@@ -106,6 +111,7 @@ final class SettingsStore {
         } else {
             self.wantToVisitColor = .defaultWantToVisit
         }
+        self.showSearchButton = UserDefaults.standard.object(forKey: showSearchButtonKey) as? Bool ?? true
     }
 
     private func saveTheme() {
@@ -118,6 +124,10 @@ final class SettingsStore {
 
     private func saveWantToVisitColor() {
         UserDefaults.standard.set(hexString(from: wantToVisitColor), forKey: wantToVisitColorKey)
+    }
+
+    private func saveShowSearchButton() {
+        UserDefaults.standard.set(showSearchButton, forKey: showSearchButtonKey)
     }
 
     func resetMapColorsToDefaults() {

@@ -17,6 +17,10 @@ struct SettingsView: View {
                     .pickerStyle(.inline)
                 }
 
+                Section("Map") {
+                    Toggle("Show search button", isOn: $settingsStore.showSearchButton)
+                }
+
                 Section("Map colors") {
                     ColorPicker("Visited or lived", selection: $settingsStore.visitedColor, supportsOpacity: false)
                     ColorPicker("Want to visit", selection: $settingsStore.wantToVisitColor, supportsOpacity: false)
@@ -29,7 +33,7 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .presentationDragIndicator(.visible)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button {
                         dismiss()
                     } label:  {
