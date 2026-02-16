@@ -97,7 +97,6 @@ struct CountrySearchSheet: View {
             }
             .toolbarBackground(.hidden)
         }
-        .presentationDragIndicator(.visible)
         .sheet(item: $selectedCountry) { selection in
             CountryStatusSheet(selection: selection, store: store, settingsStore: settingsStore)
         }

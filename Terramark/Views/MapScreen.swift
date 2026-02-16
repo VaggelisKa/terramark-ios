@@ -4,6 +4,7 @@ struct MapScreen: View {
     var store: CountryStore
     var goalStore: GoalStore
     var settingsStore: SettingsStore
+    @Namespace var searchSheetAnimationId
     @Environment(\.colorScheme) private var colorScheme
     @State private var selectedCountry: CountrySelection?
     @State private var showingWantToVisitList = false
@@ -126,6 +127,7 @@ struct MapScreen: View {
                         Spacer()
                         GlassEffectContainer {
                             Button {
+                                Haptics.lightImpact()
                                 showingCountrySearch = true
                             } label: {
                                 Image(systemName: "magnifyingglass")
@@ -135,6 +137,7 @@ struct MapScreen: View {
                             }
                             .buttonStyle(.plain)
                             .glassEffect(.clear, in: Circle())
+                            .matchedTransitionSource(id: "searchSheet", in: searchSheetAnimationId)
                         }
                         .padding(.trailing, 16)
                         .padding(.top, 8)
@@ -164,6 +167,7 @@ struct MapScreen: View {
         }
         .sheet(isPresented: $showingCountrySearch) {
             CountrySearchSheet(store: store, settingsStore: settingsStore)
+                .navigationTransition(.zoom(sourceID: "searchSheet", in: searchSheetAnimationId))
         }
         .environment(store)
         .onChange(of: settingsStore.colorSettingsRevision) { _, _ in
